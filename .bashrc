@@ -2,10 +2,6 @@
 # ~/.bashrc
 #
 
-#
-# ~/.bashrc
-#
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -47,7 +43,11 @@ function nonzero_return() {
 	[ $RETVAL -ne 0 ] && echo "$RETVAL"
 }
 
-export PS1="[\`nonzero_return\`] [\[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]] | [\[\e[34m\]\w\[\e[m\]] \n#>: "
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+export PS1="[\`nonzero_return\`] [\[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]] |\$(parse_git_branch)\[\033[00m\] | [\[\e[34m\]\w\[\e[m\]] \n#>: "
 
 
 #if [ -e ~/.bashrc.aliases ] ; then
