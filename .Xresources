@@ -8,8 +8,9 @@ URxvt.depth: 32
 
 #urxvt*transparent:	true
 #urxvt*shading:	30
-urxvt*foreground: #f2f2f2
-urxvt*background: [85]#101010
+#urxvt*foreground: #f2f2f2
+#urxvt*background: [85]#101010
+urxvt.background: rgba:0000/0000/0200/c800
 
 #COLORS =======================================================================
 #URxvt.font:	xft:Incosolota:size=12
