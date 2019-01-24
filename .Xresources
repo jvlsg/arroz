@@ -1,21 +1,22 @@
-
+URxvt.perl-ext-common: font-size
 URxvt.depth: 32
 
-#BACKGROUND & TRANSPARENCY ====================================================
-
-#95 is the opacity in %
-#URxvt.foreground: [95]#ffffff
-
-#urxvt*transparent:	true
-#urxvt*shading:	30
-urxvt*foreground: #f2f2f2
-#urxvt*background: [85]#101010
-urxvt.background: rgba:0000/0000/0200/c800
-
-#COLORS =======================================================================
-#URxvt.font:	xft:Incosolota:size=12
+URxvt.font:	xft:Fixed:size=10
+!URxvt.font:	xft:DejaVuSansMono:size=12
 URxvt.scrollBar:	false
 
+!BACKGROUND & TRANSPARENCY ====================================================
+
+!95 is the opacity in %
+!URxvt.foreground: [95]#ffffff
+
+!urxvt*transparent:	true
+!urxvt*shading:	30
+urxvt*foreground: #f2f2f2
+urxvt*background: [85]#101010
+urxvt.background: rgba:0000/0000/0200/c800
+
+!COLORS =======================================================================
 ! Normal
 ! color0    black
 ! color1    red
@@ -55,8 +56,11 @@ urxvt*color14:    #d7d9fc
 urxvt*color15:    #e2e2e2
 
 
-#KEYBINDINGS ==================================================================
-URxvt.keysym.Shift-Up: command:\033]720;1\007
-URxvt.keysym.Shift-Down: command:\033]721;1\007
-
+!KEYBINDINGS ==================================================================
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show 
 

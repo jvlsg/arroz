@@ -14,7 +14,7 @@ alias s='sudo '
 alias c='clear '
 alias rm='rm -i '
 
-
+alias fonts='fc-list | cut -f2 -d ":" | sort -u'
 #==============================================================================
 
 #PS1='[\u@\h \W]\$ '
