@@ -21,15 +21,21 @@ parse_args(){
     elif [ "$1" == "$arg_copy_files" ] ; then
         handle_files -rf
     elif [ "$1" == "-h" ];then
-        echo "usage: [-p] installs packages , [-f] links dotfiles"
+        echo "usage: [$arg_pkg] installs packages , [$arg_link_files] links dotfiles, [$arg_copy_files] Copies dotfiles"
     else
         echo "Interactive mode?"
     fi
 }
 
 install_packages(){
-    echo "INSTALLLING PACKAGES"
-    #Check for distro type, install packages
+    echo "CHEKING DISTRO TYPE"
+    distro=$(cat /etc/os-release | grep ^ID | cut -f2 -d"\"")
+    echo "IS $distro YOUR DISTRO?"
+    
+    if [ "$distro" == "void" ];then
+
+    elif [ "$distro" == ""}
+
     #pacman -S vim i3-gaps urxvt firefox compton lxappearance arc-gtk-theme openvpn cronie keepassxc veracrypt
     #pacman -Syyu
 }
