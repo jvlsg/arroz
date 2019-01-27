@@ -12,13 +12,14 @@ arg_link_files="-l"
 arg_copy_files="-c"
 arg_interactive="-i"
 
-parse_strings(){
+parse_args(){
     if [ "$1" == "$arg_pkg" ];then
         install_packages
     
-    elif [ "$1" == "$arg_link_files" ] || [ "$1" == "$arg_copy_files" ] ; then
-        handle_files $1
-
+    elif [ "$1" == "$arg_link_files" ];then
+        handle_files -rfl
+    elif [ "$1" == "$arg_copy_files" ] ; then
+        handle_files -rf
     elif [ "$1" == "-h" ];then
         echo "usage: [-p] installs packages , [-f] links dotfiles"
     else
@@ -33,32 +34,20 @@ install_packages(){
     #pacman -Syyu
 }
 
+#ARGS: Args for cp: -rf (copy) or -rfl (link)
 handle_files(){
     
-    dirs=('.config' '.urxvt')
-    files=('.vimrc' '.bashrc' '.Xresources')
-    arg_cp='-rf'
-    #Iterate on both lists, cat ../ with the strings
-    #pass as xargs to cp -rf 
+    #OBS: Copying dirs merges contents with existing dirs
+    files_and_dirs=('.config' '.urxvt' '.vimrc' '.bashrc' '.Xresources')
 
-    if [ "$1" == "$arg_link_files" ];then
-        echo "LINKING FILES"
-        cp -rfl ../.config $HOME/
-        cp -rfl ../.urxvt $HOME/
-
-        cp -fl ../.vimrc $HOME/
-        cp -fl ../.bashrc $HOME/
-        cp -fl ../.Xresources $HOME/    
-    else
-        echo "COPYING FILES"
-        cp -rf ../.config $HOME/
-        cp -rf ../.urxvt $HOME/
-
-        cp -f ../.vimrc $HOME/
-        cp -f ../.bashrc $HOME/
-        cp -f ../.Xresources $HOME/
-    fi
-
+    
+    #ITERATING
+    for i in ${files_and_dirs[@]}
+    do
+        relative_path="../$i"
+        echo "Copying/Linking $i ($relative_path) to $HOME"
+        cp $1 $relative_path $HOME/  
+    done
 }
 
-parse_strings $@ 
+parse_args $@ 
