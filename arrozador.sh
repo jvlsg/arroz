@@ -44,7 +44,7 @@ handle_files(){
     #ITERATING
     for i in ${files_and_dirs[@]}
     do
-        relative_path="../$i"
+        relative_path="dotfiles/$i"
         echo "Copying/Linking $i ($relative_path) to $HOME"
         cp $1 $relative_path $HOME/  
     done

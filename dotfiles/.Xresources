@@ -1,7 +1,7 @@
 URxvt.perl-ext-common: font-size
 URxvt.depth: 32
 
-URxvt.font:	xft:Fixed:size=10
+URxvt.font:	xft:Fixed:size=11
 !URxvt.font:	xft:DejaVuSansMono:size=12
 URxvt.scrollBar:	false
 
