@@ -14,20 +14,21 @@ arg_interactive="-i"
 
 parse_args(){
     if [ "$1" == "$arg_pkg" ];then
-        install_packages
+        install_pkgs
     elif [ "$1" == "$arg_link_files" ];then
         handle_files -rfl
     elif [ "$1" == "$arg_copy_files" ] ; then
         handle_files -rf
     elif [ "$1" == "-h" ];then
-        echo "usage: [$arg_pkg] installs packages , [$arg_link_files] links dotfiles, [$arg_copy_files] Copies dotfiles"
+        echo "usage: [$arg_pkg] installs pkgs , [$arg_link_files] links dotfiles, [$arg_copy_files] Copies dotfiles"
     else
         echo "Interactive mode?"
     fi
 }
 
-install_packages(){
-    packages=" i3-gaps urxvt firefox compton lxappearance arc-gtk-theme openvpn cronie keepassxc veracrypt"
+install_pkgs(){
+    general_pkgs=" i3-gaps dmenu i3status gcc rxvt-unicode firefox compton nitrogen lxappearance openvpn cronie keepassxc font-awesome"
+    arch_pkgs=" arc-gtk-theme veracrypt"
 
     echo "CHEKING DISTRO TYPE"
 
@@ -35,10 +36,25 @@ install_packages(){
     #cond && codigo || codigoelse
     [ -n "$ID_LIKE" ] && distro=$ID_LIKE || distro=$ID
     case $distro in
-    "arch")
-        pacman 
-
-    #pacman -S vim i3-gaps urxvt firefox compton lxappearance arc-gtk-theme openvpn cronie keepassxc veracrypt
+        "void")
+            xbps-install -S
+            xbps-install $general_pkgs
+            xbps-install -u
+        ;;
+        "arch")
+            $pkgs=$general_pkgs+$arch_pkgs
+            pacman -S $general_pkgs
+            pacman -Syyu
+        ;;
+        "debian")
+            apt-get update
+            apt-get install $pkgs
+            apt-get upgrade
+        ;;
+        *)
+            echo "Distro not currently supported"
+        ;;
+    esac 
     #pacman -Syyu
 }
 
