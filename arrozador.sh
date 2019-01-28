@@ -15,7 +15,6 @@ arg_interactive="-i"
 parse_args(){
     if [ "$1" == "$arg_pkg" ];then
         install_packages
-    
     elif [ "$1" == "$arg_link_files" ];then
         handle_files -rfl
     elif [ "$1" == "$arg_copy_files" ] ; then
@@ -28,13 +27,16 @@ parse_args(){
 }
 
 install_packages(){
-    echo "CHEKING DISTRO TYPE"
-    distro=$(cat /etc/os-release | grep ^ID | cut -f2 -d"\"")
-    echo "IS $distro YOUR DISTRO?"
-    
-    if [ "$distro" == "void" ];then
+    packages=" i3-gaps urxvt firefox compton lxappearance arc-gtk-theme openvpn cronie keepassxc veracrypt"
 
-    elif [ "$distro" == ""}
+    echo "CHEKING DISTRO TYPE"
+
+    . /etc/os-release
+    #cond && codigo || codigoelse
+    [ -n "$ID_LIKE" ] && distro=$ID_LIKE || distro=$ID
+    case $distro in
+    "arch")
+        pacman 
 
     #pacman -S vim i3-gaps urxvt firefox compton lxappearance arc-gtk-theme openvpn cronie keepassxc veracrypt
     #pacman -Syyu

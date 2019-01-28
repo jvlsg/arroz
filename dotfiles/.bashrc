@@ -72,3 +72,5 @@ __prompt_command() {
 #fi
 # >>> Added by cnchi installer
 EDITOR=/usr/bin/vim
+
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin:/home/jv/.vimpkg/bin"
