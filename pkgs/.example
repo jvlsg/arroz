@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#This sample file follows the format needed for arrozador to properly install the packages
+#Name the file with the apropriate distro name as found in the ID or ID_LIKE  variables of /etc/os-release
+
+PKG_MAN_SYNC="CommandToSyncRepositories"
+PKG_MAN_INSTALL="CommandToInstall"
+PKG_MAN_UPGRADE="CommandToUpdate"
+
+PKGS="pkg1 pkg2 pkg3 ..."

@@ -24,5 +24,5 @@ call pathogen#helptags()
 
 
 "NERDTree
-autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTree
 let NERDTreeShowHidden=1

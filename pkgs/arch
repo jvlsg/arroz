@@ -1,0 +1,24 @@
+#!/bin/bash
+
+PKG_MAN_SYNC="pacman -Syy"
+PKG_MAN_INSTALL="pacman -S"
+PKG_MAN_UPGRADE="pacman -Su"
+
+PKGS="
+    i3-gaps 
+    dmenu 
+    i3status 
+    i3lock
+    gcc 
+    rxvt-unicode 
+    firefox
+    compton
+    nitrogen 
+    lxappearance 
+    openvpn 
+    cronie 
+    keepassxc 
+    font-awesome
+    arc-gtk-theme
+    veracrypt"
+

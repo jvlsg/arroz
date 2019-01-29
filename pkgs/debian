@@ -1,0 +1,23 @@
+#!/bin/bash
+
+PKG_MAN_SYNC="apt-get update"
+PKG_MAN_INSTALL="apt-get install"
+PKG_MAN_UPGRADE="apt-get upgrade"
+
+PKGS="
+    i3-gaps 
+    dmenu 
+    i3status 
+    i3lock
+    gcc 
+    rxvt-unicode 
+    firefox
+    compton
+    nitrogen 
+    lxappearance 
+    openvpn 
+    cronie 
+    keepassxc 
+    font-awesome
+    veracrypt"
+
