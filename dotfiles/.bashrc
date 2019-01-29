@@ -15,6 +15,12 @@ alias c='clear '
 alias rm='rm -i '
 
 alias fonts='fc-list | cut -f2 -d ":" | sort -u'
+
+
+# DEFAULT PROGRAMS ============================================================
+
+EDITOR=/usr/bin/vim
+
 #==============================================================================
 
 #PS1='[\u@\h \W]\$ '
@@ -67,10 +73,5 @@ __prompt_command() {
 }
 
 
-#if [ -e ~/.bashrc.aliases ] ; then
-#   source ~/.bashrc.aliases
-#fi
-# >>> Added by cnchi installer
-EDITOR=/usr/bin/vim
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin:/home/jv/.vimpkg/bin"

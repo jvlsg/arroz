@@ -14,6 +14,9 @@ PKGS="
     firefox
     compton
     nitrogen 
+    ranger
+    sxiv
+    pcmanfm
     lxappearance 
     openvpn 
     cronie 

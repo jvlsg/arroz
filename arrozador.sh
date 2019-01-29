@@ -72,22 +72,51 @@ handle_files(){
     done
 }
 
+
 #Acts as a wizard-thingny for arrozador
 #Only called if no arguments are passed
 interactive_mode(){
     echo "Interactive mode?"
     printf "DETECTED $CURR_DISTRO AS BASE DISTRIBUTION - CORRECT?\n"
-    read -p "[Y/N] > " input
+    
+    local input=""
+
+    while $1
+    do
+        read -p "[Y/N] > " input
+        case $input in
+            "Y"|"y")
+                . ./pkgs/$CURR_DISTRO
+                im_prompt_package_edit
+            ;;
+            "N"|"n")
+                
+            ;;
+            *)
+                read -p "[Y/N] > " input
+            ;;
+        esac
+    done
+}
+
+#Prompt for Package list editing or proceed with the install
+#Requires the 
+im_prompt_package_edit(){
+    printf "ARROZADOR WILL INSTALL THE FOLLOWING PACKAGES:\n $PKGS\n"
+    local input=""
+    read -p "EDIT THE PACKAGE LIST? [Y/N] > " input 
     case $input in
         "Y"|"y")
-            echo "Nice"
+            echo $WEEE
+            $TERM -e $EDITOR ./pkgs/$CURR_DISTRO
         ;;
         "N"|"n")
-            echo "Shite"
+            install_pkgs
         ;;
         *)
             echo "Nope"
     esac
+            
 }
 
 ###############################################################################
