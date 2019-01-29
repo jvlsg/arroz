@@ -24,17 +24,15 @@ parse_args(){
         [$ARG_LINK_DOTS] links dotfiles, 
         [$ARG_COPY_DOTS] Copies dotfiles"
     else
-        echo "Interactive mode?"
+        interactive_mode
     fi
 }
 
 #Checks the User's base distro
 distro_check(){
-    echo "CHECKING DISTRO TYPE"
     . /etc/os-release
     #cond && codigo || codigoelse
     [ -n "$ID_LIKE" ] && CURR_DISTRO=$ID_LIKE || CURR_DISTRO=$ID
-    echo "DETECTED $CURR_DISTRO AS BASE"
 }
 
 #Installs the desired packages for the distribution
@@ -54,7 +52,8 @@ install_pkgs(){
             break
         fi
     done
-     
+
+    printf "ERROR: No ./pkgs/$CURR_DISTRO variable script"
 }
 
 #Handles the copying/Linking of files and directories
@@ -63,15 +62,32 @@ install_pkgs(){
 handle_files(){
     
     #Gets all files and dirs except . and ..
-    files_and_dirs=$(ls -a | cut -d " " -f3-)    
-    echo ">  $files_and_dirs"
+    files_and_dirs=$(ls ./dotfiles -A)    
     #ITERATING
     for i in ${files_and_dirs[@]}
     do
         relative_path="dotfiles/$i"
         echo "Copying/Linking $i ($relative_path) to $HOME"
-        #cp $1 $relative_path $HOME/  
+        cp $1 $relative_path $HOME/  
     done
+}
+
+#Acts as a wizard-thingny for arrozador
+#Only called if no arguments are passed
+interactive_mode(){
+    echo "Interactive mode?"
+    printf "DETECTED $CURR_DISTRO AS BASE DISTRIBUTION - CORRECT?\n"
+    read -p "[Y/N] > " input
+    case $input in
+        "Y"|"y")
+            echo "Nice"
+        ;;
+        "N"|"n")
+            echo "Shite"
+        ;;
+        *)
+            echo "Nope"
+    esac
 }
 
 ###############################################################################
