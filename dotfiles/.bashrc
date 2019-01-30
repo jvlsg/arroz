@@ -6,7 +6,6 @@
 [[ $- != *i* ]] && return
 
 #ALIASES ======================================================================
-alias sudo='sudo '
 alias ls='ls --color=auto '
 alias ll='ls -la '
 alias l='ls -a'
@@ -15,6 +14,10 @@ alias c='clear '
 alias rm='rm -i '
 
 alias fonts='fc-list | cut -f2 -d ":" | sort -u'
+
+alias xi='xbps-install -S'
+alias xq='xbps-query -R'
+alias xr='xbps-remove'
 
 
 # DEFAULT PROGRAMS ============================================================
