@@ -117,7 +117,7 @@ interactive_mode(){
                 im_prompt_package_edit
             ;;
             "N"|"n")
-                
+               read -p "Type the distro's name (should same as the /pkg filename)\n > " $CURR_DISTRO 
             ;;
             *)
                 read -p "[Y/N] > " input
