@@ -11,21 +11,47 @@ ARG_LINK_DOTS="-l"
 ARG_COPY_DOTS="-c"
 #Interactive mode
 ARG_INTER="-i"
+#Print Help
+ARG_HELP="-h"
+
 
 parse_args(){
-    if [ "$1" = "$ARG_INSTALL_PKGS" ];then
-        install_pkgs
-    elif [ "$1" = "$ARG_LINK_DOTS" ];then
-        handle_files -rfl
-    elif [ "$1" = "$ARG_COPY_DOTS" ] ; then
-        handle_files -rf
-    elif [ "$1" = "-h" ];then
-        echo "usage: [$ARG_INSTALL_PKGS] installs pkgs , 
-        [$ARG_LINK_DOTS] links dotfiles, 
-        [$ARG_COPY_DOTS] Copies dotfiles"
-    else
-        interactive_mode
+    if [ -z $@ ];then
+        print_help
+        return 1
     fi
+
+    for arg in $@
+    do
+        case $arg in
+            $ARG_INSTALL_PKGS)
+                install_pkgs
+            ;;
+            $ARG_LINK_DOTS)
+                handle_files -rfl
+            ;;
+            $ARG_COPY_DOTS)
+                handle_files -rf
+            ;;
+            
+            $ARG_INTER)
+                interactive_mode
+            ;;
+
+            $ARG_HELP | *)
+                print_help
+            ;;
+        esac
+    done
+}
+
+print_help(){
+    printf "usage:
+    \n[$ARG_INSTALL_PKGS] Installs the desire packages
+    \n[$ARG_LINK_DOTS] Links dotfiles
+    \n[$ARG_COPY_DOTS] Copies dotfiles
+    \n[$ARG_INTER] Run Interactive mode
+    "
 }
 
 #Checks the User's base distro
@@ -44,16 +70,17 @@ install_pkgs(){
     do
         if [ $CURR_DISTRO = $d ];then
             . ./pkgs/$d
-            $PKG_MAN_SYNC
-            $PKG_MAN_INSTALL $PKGS
-            $PKG_MAN_UPGRADE
+            sudo $PKG_MAN_SYNC
+            sudo $PKG_MAN_INSTALL $PKGS
+            sudo $PKG_MAN_UPGRADE
             #Unsets the variables
-            unset PKG_MAN_SYNC PKG_MAN_INSTALL PKGS PKG_MAN_UPGRADE
-            break
+            unset PKG_MAN_SYNC PKG_MAN_INSTALL PKGS PKG_MAN_UPGRADEU
+	    return 0
         fi
     done
 
     printf "ERROR: No ./pkgs/$CURR_DISTRO variable script"
+    return 1
 }
 
 #Handles the copying/Linking of files and directories

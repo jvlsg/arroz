@@ -5,7 +5,8 @@ PKG_MAN_INSTALL="apt-get install"
 PKG_MAN_UPGRADE="apt-get upgrade"
 
 PKGS="
-    i3-gaps 
+    i3-gaps
+    vim 
     dmenu 
     i3status 
     i3lock

@@ -20,5 +20,6 @@ PKGS="
     keepassxc 
     font-awesome
     arc-gtk-theme
-    veracrypt"
+    veracrypt
+    vim"
 
