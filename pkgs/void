@@ -5,23 +5,29 @@ PKG_MAN_INSTALL="xbps-install"
 PKG_MAN_UPGRADE="xbps-install -u"
 
 PKGS="
-    i3-gaps 
-    dmenu 
-    i3status 
-    i3lock
-    gcc 
-    rxvt-unicode 
-    firefox
+
+    VeraCrypt
     compton
-    vim
-    nitrogen 
-    ranger
-    sxiv
-    pcmanfm
-    lxappearance 
-    openvpn 
-    cronie 
-    keepassxc 
+    cronie
+    dmenu
+    feh
+    firefox
     font-awesome
+    gcc
+    htop
+    i3-gaps
+    i3lock
+    i3status
+    keepassxc
+    lxappearance
+    nitrogen
+    nnn
+    openvpn
+    pcmanfm
+    rxvt-unicode
+    unzip
+    vim
+    xdg-utils
     xrdb
+    zip
     "
