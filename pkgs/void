@@ -21,7 +21,7 @@ PKGS="
     keepassxc
     lxappearance
     nitrogen
-    nnn
+    ranger
     openvpn
     pcmanfm
     rxvt-unicode
