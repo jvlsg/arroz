@@ -12,49 +12,26 @@ URxvt.scrollBar:	false
 
 !urxvt*transparent:	true
 !urxvt*shading:	30
-urxvt*foreground: #f2f2f2
-urxvt*background: [85]#101010
-urxvt.background: rgba:0000/0000/0200/c800
+*foreground: #f2f2f2
+*background: rgba:0000/0000/0200/c800
 
 !COLORS =======================================================================
-! Normal
-! color0    black
-! color1    red
-! color2    green
-! color3    yellow
-! color4    blue
-! color5    purple
-! color6    cyan
-! color7    white
-
-urxvt*color0:    #6c6c6c
-urxvt*color1:    #e9897c
-urxvt*color2:    #b6e77d
-urxvt*color3:    #ecebbe
-urxvt*color4:    #a9cdeb
-urxvt*color5:    #ea96eb
-urxvt*color6:    #c9caec
-urxvt*color7:    #f2f2f2
-
-! Light
-! color8    black
-! color9    red
-! color10    green
-! color11    yellow
-! color12    blue
-! color13    purple
-! color14    cyan
-! color15    white
-
-urxvt*color8:    #747474
-urxvt*color9:    #f99286
-urxvt*color10:    #c3f786
-urxvt*color11:    #fcfbcc
-urxvt*color12:    #b6defb
-urxvt*color13:    #fba1fb
-urxvt*color14:    #d7d9fc
-urxvt*color15:    #e2e2e2
-
+*.color0: #151515
+*.color1: #ac4142
+*.color10: #7e8e50
+*.color11: #e5b567
+*.color12: #6c99bb
+*.color13: #9f4e85
+*.color14: #7dd6cf
+*.color15: #f5f5f5
+*.color2: #7e8e50
+*.color3: #e5b567
+*.color4: #6c99bb
+*.color5: #9f4e85
+*.color6: #7dd6cf
+*.color7: #d0d0d0
+*.color8: #505050
+*.color9: #ac4142
 
 !KEYBINDINGS ==================================================================
 !SCROLL

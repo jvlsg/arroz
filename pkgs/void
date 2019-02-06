@@ -23,6 +23,7 @@ PKGS="
     nitrogen
     ranger
     openvpn
+    pamixer
     pcmanfm
     rxvt-unicode
     unzip
