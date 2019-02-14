@@ -12,7 +12,6 @@ alias l='ls -a'
 alias s='sudo '
 alias c='clear '
 alias rm='rm -i '
-
 alias fonts='fc-list | cut -f2 -d ":" | sort -u'
 
 alias xi='xbps-install '
@@ -26,7 +25,6 @@ alias n3='nnn'
 
 export EDITOR='vim'
 export BROWSER='firefox'
-
 # PROMPT ======================================================================
 
 function nonzero_return() {

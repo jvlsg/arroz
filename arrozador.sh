@@ -47,7 +47,7 @@ parse_args(){
 
 print_help(){
     printf "usage:
-    \n[$ARG_INSTALL_PKGS] Installs the desire packages
+    \n[$ARG_INSTALL_PKGS] Installs the desired packages
     \n[$ARG_LINK_DOTS] Links dotfiles
     \n[$ARG_COPY_DOTS] Copies dotfiles
     \n[$ARG_INTER] Run Interactive mode
@@ -135,7 +135,7 @@ im_prompt_package_edit(){
     case $input in
         "Y"|"y")
             echo $WEEE
-            $TERM -e $EDITOR ./pkgs/$CURR_DISTRO
+            sh $TERM -e $EDITOR ./pkgs/$CURR_DISTRO
         ;;
         "N"|"n")
             install_pkgs

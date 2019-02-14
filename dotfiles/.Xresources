@@ -8,30 +8,34 @@ URxvt.scrollBar:	false
 !BACKGROUND & TRANSPARENCY ====================================================
 
 !95 is the opacity in %
-!URxvt.foreground: [95]#ffffff
+!URxvt.foreground: [85]#000000
 
 !urxvt*transparent:	true
 !urxvt*shading:	30
 *foreground: #f2f2f2
-*background: rgba:0000/0000/0200/c800
-
+!urxvt.background: rgba:0000/0000/0200/c800
+urxvt.background: [85]#000000
+*.background: #000000
 !COLORS =======================================================================
-*.color0: #151515
-*.color1: #ac4142
-*.color10: #7e8e50
-*.color11: #e5b567
-*.color12: #6c99bb
-*.color13: #9f4e85
-*.color14: #7dd6cf
-*.color15: #f5f5f5
-*.color2: #7e8e50
-*.color3: #e5b567
-*.color4: #6c99bb
-*.color5: #9f4e85
-*.color6: #7dd6cf
+!*.foreground: #fdfdfd
+!*.background: #000f1f
+*.color0: #003748
+*.color8: #134b5c
+*.color1: #de4968
+*.color9: #fe4365
+*.color2: #82b5c0
+*.color10: #18a8a8
+*.color3: #fad493
+*.color11: #f8d49a
+*.color4: #066386
+*.color12: #3587a7
+*.color5: #1bb0ce
+*.color13: #83dae3
+*.color6: #c6e5d9
+*.color14: #0fefd9
 *.color7: #d0d0d0
-*.color8: #505050
-*.color9: #ac4142
+*.color15: #e7edea
+
 
 !KEYBINDINGS ==================================================================
 !SCROLL
