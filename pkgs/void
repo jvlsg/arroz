@@ -30,5 +30,7 @@ PKGS="
     vim
     xdg-utils
     xrdb
+    zathura
+    zathura-pdf-mupdf
     zip
     "
