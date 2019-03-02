@@ -12,12 +12,12 @@ PKGS="
     dmenu
     feh
     firefox
+    flameshot
     font-awesome
     gcc
     htop
     i3-gaps
     i3lock
-    i3status
     keepassxc
     lxappearance
     nitrogen
@@ -25,6 +25,7 @@ PKGS="
     openvpn
     pamixer
     pcmanfm
+    polybar
     rxvt-unicode
     unzip
     vim

@@ -5,21 +5,21 @@ PKG_MAN_INSTALL="pacman -S"
 PKG_MAN_UPGRADE="pacman -Su"
 
 PKGS="
-    i3-gaps 
-    dmenu 
-    i3status 
-    i3lock
-    gcc 
-    rxvt-unicode 
-    firefox
-    compton
-    nitrogen 
-    lxappearance 
-    openvpn 
-    cronie 
-    keepassxc 
-    font-awesome
     arc-gtk-theme
+    compton
+    cronie
+    dmenu
+    firefox
+    flameshot
+    fontawesome
+    gcc
+    i3-gaps
+    i3lock
+    keepassxc
+    lxappearance
+    nitrogen
+    openvpn
+    polybar
+    rxvt-unicode
     veracrypt
     vim"
-
