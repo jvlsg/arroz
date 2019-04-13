@@ -12,14 +12,20 @@ PKGS="
     gcc 
     rxvt-unicode 
     firefox
+    feh
     compton
     nitrogen 
     lxappearance 
     openvpn 
     cronie 
     keepassxc 
-    font-awesome
+    ttf-font-awesome
     arc-gtk-theme
     veracrypt
-    vim"
+    vim
+    nnn
+    ranger
+    neofetch
+    newsboat
+    "
 
