@@ -7,7 +7,7 @@
 
 #ALIASES ======================================================================
 alias ls='ls --color=auto '
-alias ll='ls -la '
+alias ll='ls -lah '
 alias l='ls -a'
 alias s='sudo '
 alias c='clear '

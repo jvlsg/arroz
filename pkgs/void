@@ -5,19 +5,21 @@ PKG_MAN_INSTALL="xbps-install"
 PKG_MAN_UPGRADE="xbps-install -u"
 
 PKGS="
-
+    arandr
+    newsboat
+    cherrytree
     VeraCrypt
     compton
     cronie
     dmenu
     feh
     firefox
+    flameshot
     font-awesome
     gcc
     htop
     i3-gaps
     i3lock
-    i3status
     keepassxc
     lxappearance
     nitrogen
@@ -25,10 +27,13 @@ PKGS="
     openvpn
     pamixer
     pcmanfm
+    polybar
     rxvt-unicode
     unzip
     vim
     xdg-utils
     xrdb
+    zathura
+    zathura-pdf-mupdf
     zip
     "

@@ -51,28 +51,29 @@ client.background       #ffffff
 exec --no-startup-id "compton -cC"
 exec --no-startup-id nm-applet
 exec --no-startup-id "nitrogen --restore"
-#exec --no-startup-id "sleep 2s && kalu"
-exec --no-startup-id "xrdb ~/.Xresources"
+exec_always --no-startup-id "xrdb ~/.Xresources"
+exec --no-startup-id "polybar example"
+
 
 #BAR ==========================================================================
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-    status_command i3status
-    font pango: $font_bar 
+#bar {
+    #status_command i3status
+    #font pango: $font_bar 
     
-	colors {
-        background $dgrey2
+	#colors {
+    #    background $dgrey2
 
-        separator #666666
+     #   separator #666666
 
         #                  border             background         text
         #focused_workspace  $bg-color          $bg-color          $text-color
         #inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
         #urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-    }
-}
+    #}
+#}
 
 #BINDINGS =====================================================================
 
@@ -123,7 +124,6 @@ bindsym $mod+minus exec --no-startup-id pamixer -d 5
 
 # Redirect sound to headphones
 bindsym $mod+m exec "/usr/local/bin/switch-audio-port"
-
 
 #MAIN CONFIG ==================================================================
 

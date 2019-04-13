@@ -19,22 +19,58 @@ URxvt.background: [80]#000000
 !COLORS =======================================================================
 !*.foreground: #fdfdfd
 !*.background: #000f1f
-*.color0: #003748
-*.color8: #134b5c
-*.color1: #de4968
-*.color9: #fe4365
-*.color2: #82b5c0
-*.color10: #18a8a8
-*.color3: #fad493
-*.color11: #f8d49a
-*.color4: #066386
-*.color12: #3587a7
-*.color5: #1bb0ce
-*.color13: #83dae3
-*.color6: #c6e5d9
-*.color14: #0fefd9
-*.color7: #d0d0d0
-*.color15: #e7edea
+!*.color0: #003748
+!*.color8: #134b5c
+!*.color1: #de4968
+!*.color9: #fe4365
+!*.color2: #82b5c0
+!*.color10: #18a8a8
+!*.color3: #fad493
+!*.color11: #f8d49a
+!*.color4: #066386
+!*.color12: #3587a7
+!*.color5: #1bb0ce
+!*.color13: #83dae3
+!*.color6: #c6e5d9
+!*.color14: #0fefd9
+!*.color7: #d0d0d0
+!*.color15: #e7edea
+! special
+*.foreground:   #c5c8c6
+*.background:   #1d1f21
+*.cursorColor:  #c5c8c6
+
+! black
+*.color0:       #282a2e
+*.color8:       #373b41
+
+! red
+*.color1:       #a54242
+*.color9:       #cc6666
+
+! green
+*.color2:       #8c9440
+*.color10:      #b5bd68
+
+! yellow
+*.color3:       #de935f
+*.color11:      #f0c674
+
+! blue
+*.color4:       #5f819d
+*.color12:      #81a2be
+
+! magenta
+*.color5:       #3e99cb
+*.color13:      #5d6aca
+
+! cyan
+*.color6:       #5e8d87
+*.color14:      #8abeb7
+
+! white
+*.color7:       #707880
+*.color15:      #c5c8c6
 
 
 !KEYBINDINGS ==================================================================
