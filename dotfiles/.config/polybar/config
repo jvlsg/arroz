@@ -17,7 +17,8 @@
 ;==========================================================
 
 [colors]
-background = ${xrdb:color0:#222}
+;background = ${xrdb:color0:#222}
+background = #111
 background-alt = #444
 
 foreground = ${xrdb:color7:#222}
@@ -30,13 +31,15 @@ primary = ${xrdb:color6:#222}
 secondary = ${xrdb:color4:#222}
 alert = #bd2c40
 
-[bar/example]
+[bar/jao]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 27
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 6.0
+
+;Round edges
+radius = 0.0
 fixed-center = false
 
 bottom = true
@@ -56,7 +59,7 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = terminus:pixelsize=10;1
+font-0 = FontAwesome:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
