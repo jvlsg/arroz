@@ -1,7 +1,7 @@
-URxvt.perl-ext-common: font-size
+Uxvt.perl-ext-common: font-size
 URxvt.depth: 32
 
-URxvt.font:	xft:Terminus:size=12
+URxvt.font:	xft:xos4 Terminus:size=12
 !URxvt.font:	xft:DejaVuSansMono:size=12
 URxvt.scrollBar:	false
 
@@ -14,8 +14,8 @@ URxvt.scrollBar:	false
 !urxvt*shading:	30
 *foreground: #f2f2f2
 !urxvt.background: rgba:0000/0000/0200/c800
-urxvt.background: [85]#000000
-*.background: #000000
+URxvt.background: [80]#000000
+
 !COLORS =======================================================================
 !*.foreground: #fdfdfd
 !*.background: #000f1f
@@ -78,6 +78,9 @@ urxvt.background: [85]#000000
 URxvt.keysym.Shift-Up:     command:\033]720;1\007
 URxvt.keysym.Shift-Down:     command:\033]721;1\007
 
+!COPY PASTE
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 
 !ZOOM
 URxvt.keysym.C-Up:     font-size:increase

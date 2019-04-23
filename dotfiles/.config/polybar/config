@@ -18,8 +18,8 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #111
-background-alt = #444
+background = #aa111111
+background-alt = #aa040404
 
 foreground = ${xrdb:color7:#222}
 ;foreground = #dfdfdf
@@ -33,6 +33,7 @@ alert = #bd2c40
 
 [bar/jao]
 ;monitor = ${env:MONITOR:HDMI-1}
+;monitor="LVDS-1"
 width = 100%
 height = 27
 ;offset-x = 1%
@@ -65,11 +66,11 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm i3
 modules-center = mpd
-modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = filesystem xbacklight pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 
 tray-position = right
 tray-padding = 2
-tray-background = ${colors.secondary}
+;tray-background = ${colors.secondary}
 
 ;wm-restack = bspwm
 wm-restack = i3

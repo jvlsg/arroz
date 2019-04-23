@@ -5,7 +5,9 @@ PKG_MAN_INSTALL="xbps-install"
 PKG_MAN_UPGRADE="xbps-install -u"
 
 PKGS="
-
+    arandr
+    newsboat
+    cherrytree
     VeraCrypt
     compton
     cronie
@@ -14,6 +16,8 @@ PKGS="
     firefox
     flameshot
     font-awesome
+    font-Siji
+    font-unifont-bdf
     gcc
     htop
     i3-gaps

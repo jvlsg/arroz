@@ -51,8 +51,9 @@ client.background       #ffffff
 exec --no-startup-id "compton -cC"
 exec --no-startup-id nm-applet
 exec --no-startup-id "nitrogen --restore"
-#exec --no-startup-id "sleep 2s && kalu"
 exec_always --no-startup-id "xrdb ~/.Xresources"
+exec --no-startup-id "polybar example"
+
 
 exec --no-startup-id "polybar example"
 #exec_always --no-startup-id "pkill -USR1 polybar"
@@ -75,8 +76,6 @@ exec --no-startup-id "polybar example"
         #urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
     #}
 #}
-
-#BINDINGS =====================================================================
 
 #FUNCTION KEYS ------------------------
 

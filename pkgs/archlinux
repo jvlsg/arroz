@@ -22,4 +22,10 @@ PKGS="
     polybar
     rxvt-unicode
     veracrypt
-    vim"
+    vim
+    nnn
+    ranger
+    neofetch
+    newsboat
+    "
+

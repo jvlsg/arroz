@@ -6,6 +6,7 @@
 [[ $- != *i* ]] && return
 
 #ALIASES ======================================================================
+alias ..='cd ..'
 alias ls='ls --color=auto '
 alias ll='ls -lah '
 alias l='ls -a'
