@@ -89,7 +89,7 @@ bindsym $mod+F3 exec pcmanfm
 bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
-bindsym $mod+l exec i3lock -c 000000
+bindsym $mod+l exec i3lock -B=5 -S=0 -k --timecolor=FFFFFFFF --datecolor=FFFFFFFF
 
 
 #MULTIMEDIA ---------------------------

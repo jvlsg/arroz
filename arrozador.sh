@@ -4,26 +4,21 @@
 ## USAGE: $PROG [OPTION] COMMAND
 ##
 #Install desired packages
-ARG_INSTALL_PKGS="-p"
+ARG_INSTALL_PKGS="p"
 #Hardlink the Dotfiles
-ARG_LINK_DOTS="-l"
+ARG_LINK_DOTS="l"
 #Only Copy the Dotfiles
-ARG_COPY_DOTS="-c"
+ARG_COPY_DOTS="c"
 #Interactive mode
-ARG_INTER="-i"
+ARG_INTER="i"
 #Print Help
-ARG_HELP="-h"
+ARG_HELP="h"
 
 
 parse_args(){
-    if [ -z $@ ];then
-        print_help
-        return 1
-    fi
-
-    for arg in $@
-    do
-        case $arg in
+    
+    while getopts ":$ARG_INSTALL_PKGS $ARG_LINK_DOTS $ARG_COPY_DOTS $ARG_INTER $ARG_HELP" arg;do
+        case ${arg} in
             $ARG_INSTALL_PKGS)
                 install_pkgs
             ;;
@@ -33,40 +28,44 @@ parse_args(){
             $ARG_COPY_DOTS)
                 handle_files -rf
             ;;
-            
             $ARG_INTER)
                 interactive_mode
             ;;
-
-            $ARG_HELP | *)
+            $ARG_HELP | * | \?)
                 print_help
             ;;
         esac
     done
+    shift $((OPTIND -1))
 }
 
 print_help(){
     printf "usage:
-    \n[$ARG_INSTALL_PKGS] Installs the desired packages
-    \n[$ARG_LINK_DOTS] Links dotfiles
-    \n[$ARG_COPY_DOTS] Copies dotfiles
-    \n[$ARG_INTER] Run Interactive mode
+    \n[-$ARG_INSTALL_PKGS] Installs the desired packages
+    \n[-$ARG_LINK_DOTS] Links dotfiles
+    \n[-$ARG_COPY_DOTS] Copies dotfiles
+    \n[-$ARG_INTER] Run Interactive mode
     "
 }
 
 #Checks the User's base distro
 distro_check(){
     . /etc/os-release
-    #cond && codigo || codigoelse
+    #cond && codigo || codigo-else
     [ -n "$ID_LIKE" ] && CURR_DISTRO=$ID_LIKE || CURR_DISTRO=$ID
 }
 
 #Installs the desired packages for the distribution
 install_pkgs(){ 
     #List of supported Distros
-    distro_list=$(ls ./pkgs)
+    candidate_distros=$(ls ./pkgs | grep $CURR_DISTRO)
     
-    for d in $distro_list 
+    if [ -z $candidate_distros ];then
+        printf "ERROR: No ./pkgs/$CURR_DISTRO variable script"
+        return 1
+    fi
+    return 0
+    for d in $candidate_distros
     do
         if [ $CURR_DISTRO = $d ];then
             . ./pkgs/$d
@@ -74,7 +73,7 @@ install_pkgs(){
             sudo $PKG_MAN_INSTALL $PKGS
             sudo $PKG_MAN_UPGRADE
             #Unsets the variables
-            unset PKG_MAN_SYNC PKG_MAN_INSTALL PKGS PKG_MAN_UPGRADEU
+            unset PKG_MAN_SYNC PKG_MAN_INSTALL PKGS PKG_MAN_UPGRADE
 	    return 0
         fi
     done

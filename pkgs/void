@@ -21,7 +21,7 @@ PKGS="
     gcc
     htop
     i3-gaps
-    i3lock
+    i3lock-color
     keepassxc
     lxappearance
     nitrogen
