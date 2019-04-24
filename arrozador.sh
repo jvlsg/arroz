@@ -68,12 +68,7 @@ install_pkgs(){
     fi
     
     if [ ${#candidate_distros[@]} -eq 1 ];then
-        . ./pkgs/$d
-        sudo $PKG_MAN_SYNC
-        sudo $PKG_MAN_INSTALL $PKGS
-        sudo $PKG_MAN_UPGRADE
-        #Unsets the variables
-        unset PKG_MAN_SYNC PKG_MAN_INSTALL PKGS PKG_MAN_UPGRADE
+        run_install_cmds ./pkgs/$candidate_distros
         return 0
     else
         for d in $candidate_distros
@@ -81,16 +76,24 @@ install_pkgs(){
             read -p "USE $d file? [Y/N] > " input 
             case $input in
                 "Y"|"y")
-                    . ./pkgs/$d
-                    sudo $PKG_MAN_SYNC
-                    sudo $PKG_MAN_INSTALL $PKGS
-                    sudo $PKG_MAN_UPGRADE
-                    #Unsets the variables
-                    unset PKG_MAN_SYNC PKG_MAN_INSTALL PKGS PKG_MAN_UPGRADE
-                ;;
+                    run_install_cmds ./pkgs/$d
+               ;;
             esac        
         done
     fi
+    return 1
+}
+
+#Runs install commands after being set by running the distro's shell file
+#$1:    File with the variables
+run_install_cmds(){
+    . $1    #Runs the file 
+    sudo $PKG_MAN_SYNC
+    sudo $PKG_MAN_INSTALL $PKGS
+    sudo $PKG_MAN_UPGRADE
+    #Unsets the variables
+    unset PKG_MAN_SYNC PKG_MAN_INSTALL PKGS PKG_MAN_UPGRADE
+    return 0
 }
 
 #Handles the copying/Linking of files and directories
