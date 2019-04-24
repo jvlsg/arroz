@@ -60,26 +60,37 @@ install_pkgs(){
     #List of supported Distros
     candidate_distros=$(ls ./pkgs | grep $CURR_DISTRO)
     
-    if [ -z $candidate_distros ];then
-        printf "ERROR: No ./pkgs/$CURR_DISTRO variable script"
+    #Length of Array: ${#array_name[@]}
+
+    if [ ${#candidate_distros[@]} -eq 0 ];then
+        printf "ERROR: No ./pkgs/$CURR_DISTRO (or similar) variable script"
         return 1
     fi
-    return 0
-    for d in $candidate_distros
-    do
-        if [ $CURR_DISTRO = $d ];then
-            . ./pkgs/$d
-            sudo $PKG_MAN_SYNC
-            sudo $PKG_MAN_INSTALL $PKGS
-            sudo $PKG_MAN_UPGRADE
-            #Unsets the variables
-            unset PKG_MAN_SYNC PKG_MAN_INSTALL PKGS PKG_MAN_UPGRADE
-	    return 0
-        fi
-    done
-
-    printf "ERROR: No ./pkgs/$CURR_DISTRO variable script"
-    return 1
+    
+    if [ ${#candidate_distros[@]} -eq 1 ];then
+        . ./pkgs/$d
+        sudo $PKG_MAN_SYNC
+        sudo $PKG_MAN_INSTALL $PKGS
+        sudo $PKG_MAN_UPGRADE
+        #Unsets the variables
+        unset PKG_MAN_SYNC PKG_MAN_INSTALL PKGS PKG_MAN_UPGRADE
+        return 0
+    else
+        for d in $candidate_distros
+        do
+            read -p "USE $d file? [Y/N] > " input 
+            case $input in
+                "Y"|"y")
+                    . ./pkgs/$d
+                    sudo $PKG_MAN_SYNC
+                    sudo $PKG_MAN_INSTALL $PKGS
+                    sudo $PKG_MAN_UPGRADE
+                    #Unsets the variables
+                    unset PKG_MAN_SYNC PKG_MAN_INSTALL PKGS PKG_MAN_UPGRADE
+                ;;
+            esac        
+        done
+    fi
 }
 
 #Handles the copying/Linking of files and directories
