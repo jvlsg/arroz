@@ -6,20 +6,18 @@ PKG_MAN_UPGRADE="pacman -Su"
 
 PKGS="
     arc-gtk-theme
+    awesome-terminal-fonts
     compton
     cronie
     dmenu
     firefox
     flameshot
-    fontawesome
     gcc
     i3-gaps
-    i3lock-color
     keepassxc
     lxappearance
     nitrogen
     openvpn
-    polybar
     rxvt-unicode
     veracrypt
     vim
@@ -27,5 +25,6 @@ PKGS="
     ranger
     neofetch
     newsboat
+    yay
     "
 
