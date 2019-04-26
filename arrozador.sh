@@ -19,22 +19,24 @@ ARG_HELP="h"
 
 #Checks the User's base distro
 get_distro(){
+    CURR_DISTRO=""
     . /etc/os-release
     #cond && codigo || codigo-else
     [ -n "$ID_LIKE" ] && CURR_DISTRO=$ID_LIKE || CURR_DISTRO=$ID
-    echo "SELECTED $CURR_DISTRO AS DISTRO"
+    echo "AUTO-SELECTED $CURR_DISTRO AS DISTRO"
 }
 
 #SELECTS THE DISTRO DIRECTOY and files to use
 #$1: Distros name
 select_distro_dir(){
+   
     candidate_distros=$(ls ./distros | grep $1)
     
     #Length of Array: ${#array_name[@]}
 
     if [ ${#candidate_distros[@]} -eq 0 ];then
         
-        printf "ERROR: No ./distros/$1 (or similar) directory"
+        printf "ERROR: No ./distros/$1 (or similar) directory" >&2
         return 1
     fi
     
@@ -47,7 +49,6 @@ select_distro_dir(){
         do
             y_n_prompt "USE $d files?"
             if [ $? -eq 0 ];then
-
                 echo "USING ./distros/$d CONFIGS"
                 cd ./distros/$d
                 return $?
@@ -65,15 +66,17 @@ print_help(){
     \n[-$ARG_LINK_DOTS] Links dotfiles
     \n[-$ARG_COPY_DOTS] Copies dotfiles
     \n[-$ARG_INTER] Run Interactive mode
-    "
+    \n[-$ARG_FORCE_DISTRO DISTRO] Force-use a distro's packages and configs
+    \n"
 }
 
 
 parse_args(){
-    while getopts ":$ARG_FORCE_DISTRO $ARG_INSTALL_PKGS $ARG_LINK_DOTS $ARG_COPY_DOTS $ARG_INTER $ARG_HELP" arg;do
+    #Arguments with Optional Arguments need a : after
+    while getopts ":$ARG_FORCE_DISTRO: $ARG_INSTALL_PKGS $ARG_LINK_DOTS $ARG_COPY_DOTS $ARG_INTER $ARG_HELP" arg;do
         case ${arg} in
             $ARG_FORCE_DISTRO)
-                echo "TODO"
+                force_distro $OPTARG
             ;;
             $ARG_INSTALL_PKGS)
                 install_pkgs
@@ -92,7 +95,17 @@ parse_args(){
             ;;
         esac
     done
-    shift $((OPTIND -1))
+}
+
+force_distro(){ 
+    if [ -n $1 ];then
+        CURR_DISTRO=$1
+        echo "FORCE-SELECTED $CURR_DISTRO AS DISTRO"
+        cd ../..
+        select_distro_dir $CURR_DISTRO
+    else
+        echo "ERROR: Specifiy the distro name"
+    fi
 }
 
 #Installs the desired packages for the distribution
@@ -105,26 +118,28 @@ install_pkgs(){
         echo "SYNCHRONIZING PACKAGE MANAGER"
         sudo $PKG_MAN_SYNC
         if [ $? -ne 0 ];then
-            echo "ERROR: FAILED SYNCHRONIZING PACKAGE MANAGER"
+            echo "ERROR: FAILED SYNCHRONIZING PACKAGE MANAGER" >&2
         fi
         
         echo "INSTALLING PACKAGES"
         sudo $PKG_MAN_INSTALL $PKGS
         if [ $? -ne 0 ];then
-            echo "ERROR: FAILED INSTALLING PACKAGES"
+            echo "ERROR: FAILED INSTALLING PACKAGES" >&2
         fi
         
         echo "UPGRADING PACKAGES"
         sudo $PKG_MAN_UPGRADE
         if [ $? -ne 0 ];then
-            echo "ERROR: FAILED UPGRADING PACKAGES"
+            echo "ERROR: FAILED UPGRADING PACKAGES" >&2
         fi
         
+        echo "...DONE"
+
         #Unsets the variables
         unset PKG_MAN_SYNC PKG_MAN_INSTALL PKGS PKG_MAN_UPGRADE
     
     else
-        echo "ERROR, NO PKG.CONF FILE DETECTED"
+        echo "ERROR: NO PKG.CONF FILE DETECTED" >&2
     fi
 
 }
@@ -142,7 +157,7 @@ handle_files(){
     elif [ $1 == "-rfl" ];then
         FILE_OP_STR="LINKING"
     else
-        echo "ERROR: INVALID handle_files OPERATION "
+        echo "ERROR: INVALID handle_files OPERATION " >&2
     fi
 
     #Gets all files and dirs except . and ..
@@ -156,10 +171,12 @@ handle_files(){
         cp $1 $relative_path $HOME/ 
 
         if [ $? -ne 0 ];then
-            echo "ERROR: FAILED cp $1 $relative_path $HOME"
+            echo "ERROR: FAILED cp $1 $relative_path $HOME" >&2
         fi
         
     done
+
+    echo "...DONE"
 }
 
 
@@ -220,4 +237,3 @@ cat ./title
 get_distro
 select_distro_dir $CURR_DISTRO
 parse_args $@
-echo "...Done"
