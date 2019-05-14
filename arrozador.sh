@@ -100,7 +100,7 @@ parse_args(){
 force_distro(){ 
     if [ -n $1 ];then
         CURR_DISTRO=$1
-        echo "FORCE-SELECTED $CURR_DISTRO AS DISTRO"
+        $echo "FORCE-SELECTED $CURR_DISTRO AS DISTRO"
         cd ../..
         select_distro_dir $CURR_DISTRO
     else
@@ -187,13 +187,15 @@ interactive_mode(){
     
     y_n_prompt "DETECTED $CURR_DISTRO AS BASE DISTRIBUTION - CORRECT?"
 
-     
-    if [ $? -eq 0 ];then
-        . ./pkgs/$CURR_DISTRO
-        im_prompt_package_edit
-    else
-        read -p "Type the distro's name (should same as the /pkg filename)\n > " $CURR_DISTRO 
+    #Force Distro 
+    if [ ! $? -eq 0 ];then
+        printf "Type the distro's name (should same as the /pkg filename)\n"
+        read -p " > " distro_attempt
+        force_distro $distro_attempt
+        unset distro_attempt
     fi
+
+    im_prompt_package_edit
 }
 
     #Prompt for Package list editing or proceed with the install
