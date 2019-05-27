@@ -23,7 +23,6 @@ alias xr='xbps-remove'
 alias n3='nnn'
 
 # ENV VARIABLES  ============================================================
-
 export EDITOR='vim'
 export BROWSER='firefox'
 # PROMPT ======================================================================

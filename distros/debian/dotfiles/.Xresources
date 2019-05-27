@@ -1,9 +1,12 @@
 Uxvt.perl-ext-common: font-size
 URxvt.depth: 32
 
-URxvt.font:	xft: Terminus:size=12
+URxvt.font:	xft: Raize:size=12
+!URxvt.font:	xft: FreeMono:size=12
 !URxvt.font:	xft:DejaVuSansMono:size=12
 URxvt.scrollBar:	false
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 
 !BACKGROUND & TRANSPARENCY ====================================================
 
