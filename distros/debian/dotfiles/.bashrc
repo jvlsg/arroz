@@ -15,16 +15,12 @@ alias c='clear '
 alias rm='rm -i '
 alias fonts='fc-list | cut -f2 -d ":" | sort -u'
 
-alias xi='xbps-install '
-alias xup='xbps-install -Su'
-alias xq='xbps-query -R'
-alias xr='xbps-remove'
 
 alias n3='nnn'
 
 # ENV VARIABLES  ============================================================
 export EDITOR='vim'
-export BROWSER='firefox'
+export BROWSER='snap run firefox'
 # PROMPT ======================================================================
 
 function nonzero_return() {

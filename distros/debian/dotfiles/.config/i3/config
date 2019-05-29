@@ -53,13 +53,14 @@ exec --no-startup-id nm-applet
 exec --no-startup-id "nitrogen --restore"
 exec_always --no-startup-id "xrdb ~/.Xresources"
 exec --no-startup-id "polybar jao"
-
-
+exec --no-startup-id "wicd-client"
+exec --no-startup-id "zoom"
 
 #BINDINGS  =====================================================================
 
 #FUNCTION KEYS ------------------------
-bindsym $mod+F1 exec firefox
+#bindsym $mod+F1 exec firefox
+bindsym $mod+F1 exec firefox 
 bindsym $mod+F3 exec pcmanfm
 
 
@@ -82,14 +83,22 @@ bindsym $mod+k mode "$keyboard_layout"
 bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
-bindsym $mod+l exec i3lock 
+bindsym $mod+l exec i3lock -c 000000 -i /home/joaog/Pictures/lockscreen.png 
 
 
 #MULTIMEDIA ---------------------------
 
 # volume
-bindsym $mod+plus exec --no-startup-id pamixer -i 5
-bindsym $mod+minus exec --no-startup-id pamixer -d 5
+#bindsym $mod+plus exec --no-startup-id pamixer -i 5
+#bindsym $mod+minus exec --no-startup-id pamixer -d 5
+
+## volume
+# granular volume control
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+# mute
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+
 
 # Redirect sound to headphones
 bindsym $mod+m exec "/usr/local/bin/switch-audio-port"
