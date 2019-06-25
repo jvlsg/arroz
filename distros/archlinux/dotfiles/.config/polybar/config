@@ -220,12 +220,12 @@ ping-interval = 3
 
 [module/wired-network]
 type = internal/network
-interface = enp0s3
+interface = eno1
 inherit = module/network
 
 [module/wireless-network]
 type = internal/network
-interface = wlan1
+interface = wlo1
 inherit = module/network
 format-connected = <label-connected> -  <ramp-signal> 
 
