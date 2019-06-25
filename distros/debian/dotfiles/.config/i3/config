@@ -58,11 +58,17 @@ exec --no-startup-id "zoom"
 
 #BINDINGS  =====================================================================
 
+bindsym $mod+l exec i3lock -f -t --image=/home/joaog/Pictures/lock.png 
+
 #FUNCTION KEYS ------------------------
 #bindsym $mod+F1 exec firefox
 bindsym $mod+F1 exec firefox 
 bindsym $mod+F3 exec pcmanfm
 
+bindsym $mod+F4 exec pavucontrol
+bindsym $mod+F5 exec arandr
+
+bindsym $mod+F8 exec virtualbox 
 
 #KEYBOARD LAYOUT ---------------------
 set $keyboard_layout Keyboard Layout: (b) br, (e) en-us
@@ -78,42 +84,24 @@ bindsym $mod+k mode "$keyboard_layout"
 
 #LIGHT --------------------------------
 
-#bindsym $mod+i exec light -s /sysfs/backlight/acpi_video0 -U 10
-#bindsym $mod+o exec light -s /sysfs/backlight/acpi_video0 -A 10
 bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
-bindsym $mod+l exec i3lock -c 000000 -i /home/joaog/Pictures/lockscreen.png 
-
-
 #MULTIMEDIA ---------------------------
-
 # volume
-#bindsym $mod+plus exec --no-startup-id pamixer -i 5
-#bindsym $mod+minus exec --no-startup-id pamixer -d 5
-
-## volume
-# granular volume control
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 # mute
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
-
-# Redirect sound to headphones
-bindsym $mod+m exec "/usr/local/bin/switch-audio-port"
-
+bindsym $mod+n exec nitrogen ~/Pictures/Wallpapers
 
 #TERMINAL -----------------------------
-# start a termina
-#bindsym $mod+Return exec i3-sensible-terminal
+# start a terminal
 bindsym $mod+Return exec urxvt
 
 #LAUNCHER -----------------------------
-bindsym $mod+d exec dmenu_run -fn "envypn-12"
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
+bindsym $mod+d exec dmenu_run -fn "raize-12"
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop -fn "envypn-12"
 
 
@@ -212,18 +200,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the windowâ€™s width.
-        # Pressing right will grow the windowâ€™s width.
-        # Pressing up will shrink the windowâ€™s height.
-        # Pressing down will grow the windowâ€™s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
