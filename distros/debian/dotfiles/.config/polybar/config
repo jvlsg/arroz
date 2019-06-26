@@ -51,6 +51,15 @@ color14= ${xrdb:color14:#222}
 color15= ${xrdb:color15:#222}
 
 
+
+;     ██╗ █████╗  ██████╗ 
+;     ██║██╔══██╗██╔═══██╗
+;     ██║███████║██║   ██║
+;██   ██║██╔══██║██║   ██║
+;╚█████╔╝██║  ██║╚██████╔╝
+; ╚════╝ ╚═╝  ╚═╝ ╚═════╝ 
+                                         
+
 [bar/jao]
 ;monitor = ${env:MONITOR:HDMI-1}
 ;monitor="LVDS-1"
@@ -104,6 +113,66 @@ wm-restack = i3
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+
+;███████╗██╗   ██╗███████╗
+;██╔════╝╚██╗ ██╔╝██╔════╝
+;█████╗   ╚████╔╝ █████╗  
+;██╔══╝    ╚██╔╝  ██╔══╝  
+;███████╗   ██║   ███████╗
+;╚══════╝   ╚═╝   ╚══════╝
+                        
+[bar/eye]
+;monitor = ${env:MONITOR:HDMI-1}
+;monitor="LVDS-1"
+;width = 80%
+    height = 15
+;offset-x = -20%
+;offset-y = 1%
+
+bottom = false
+
+;Round edges
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 2
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = FontAwesome:size=10;1
+font-1 = Raize:size=10;1
+;font-1 = unifont:fontformat=truetype:size=11;0
+font-2 = siji:size=22;1
+
+
+modules-left =  
+modules-center = news 
+modules-right = wired-network wireless-network filesystem
+
+tray-position = right
+tray-padding = 2
+;tray-background = ${colors.secondary}
+
+;override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+
+
 
 ;==============================================================================
 ;MODULES
@@ -467,3 +536,6 @@ margin-bottom = 5
 
 ; vim:ft=dosini
 
+
+; [module/news]
+include-file = ~/.config/polybar/scripts/news/module.conf

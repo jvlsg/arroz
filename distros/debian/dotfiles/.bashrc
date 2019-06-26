@@ -6,7 +6,6 @@
 [[ $- != *i* ]] && return
 
 #ALIASES ======================================================================
-alias ..='cd ..'
 alias ls='ls --color=auto '
 alias ll='ls -lah '
 alias l='ls -a'
@@ -15,6 +14,10 @@ alias c='clear '
 alias rm='rm -i '
 alias fonts='fc-list | cut -f2 -d ":" | sort -u'
 
+
+alias ..='cd ..'
+alias cdg='cd ~/git/'
+alias cdd='cd ~/Documents/'
 
 alias n3='nnn'
 
@@ -53,4 +56,4 @@ __prompt_command() {
 
 
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin:/home/jv/.vimpkg/bin:/snap/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin:~/.vimpkg/bin:/snap/bin"
