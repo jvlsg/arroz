@@ -56,4 +56,4 @@ __prompt_command() {
 
 
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin:~/.vimpkg/bin:/snap/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin:~/.vimpkg/bin:/snap/bin:/opt"

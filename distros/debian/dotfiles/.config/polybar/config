@@ -62,9 +62,9 @@ color15= ${xrdb:color15:#222}
 
 [bar/jao]
 ;monitor = ${env:MONITOR:HDMI-1}
-;monitor="LVDS-1"
+monitor="eDP-1"
 width = 100%
-height = 25
+height = 20
 ;offset-x = 1%
 ;offset-y = 1%
 
