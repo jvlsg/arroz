@@ -62,6 +62,15 @@ exec --no-startup-id "polybar jao"
 bindsym $mod+F1 exec firefox
 bindsym $mod+F3 exec pcmanfm
 
+bindsym $mod+F5 exec virtualbox 
+
+# Pavucontrol
+bindsym $mod+F11 exec arandr
+bindsym $mod+F12 exec pavucontrol
+
+#EYE BAR -----------------------------
+bindsym $mod+Shift+question exec --no-startup-id polybar eye
+bindsym $mod+Shift+period exec pkill -f "polybar eye"
 
 #KEYBOARD LAYOUT ---------------------
 set $keyboard_layout Keyboard Layout: (b) br, (e) en-us
@@ -77,10 +86,10 @@ bindsym $mod+k mode "$keyboard_layout"
 
 #LIGHT --------------------------------
 
-#bindsym $mod+i exec light -s /sysfs/backlight/acpi_video0 -U 10
-#bindsym $mod+o exec light -s /sysfs/backlight/acpi_video0 -A 10
-bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+bindsym $mod+i exec light -A 5 
+bindsym $mod+o exec light -U 5 
+#bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 bindsym $mod+l exec i3lock -B=5 -S=0 -k --timecolor=FFFFFFFF --datecolor=FFFFFFFF
 
@@ -88,8 +97,12 @@ bindsym $mod+l exec i3lock -B=5 -S=0 -k --timecolor=FFFFFFFF --datecolor=FFFFFFF
 #MULTIMEDIA ---------------------------
 
 # volume
-bindsym $mod+plus exec --no-startup-id pamixer -i 5
-bindsym $mod+minus exec --no-startup-id pamixer -d 5
+#bindsym $mod+plus 
+#bindsym $mod+minus exec 
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
+# mute
+bindsym XF86AudioMute exec --no-startup-id pamixer -t
 
 # Redirect sound to headphones
 bindsym $mod+m exec "/usr/local/bin/switch-audio-port"
@@ -100,20 +113,12 @@ bindsym $mod+m exec "/usr/local/bin/switch-audio-port"
 bindsym $mod+Return exec i3-sensible-terminal
 
 #LAUNCHER -----------------------------
-bindsym $mod+d exec dmenu_run -fn "envypn-12"
+bindsym $mod+d exec rofi -show run -modi run -location 1 -width 100
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop -fn "envypn-12"
-
-
-#MAIN CONFIG ==================================================================
-
-# Font for window titles. Will also be used by the bar unless a different font
-font pango:$font_main
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -123,12 +128,6 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -203,16 +202,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the windowâ€™s width.
-        # Pressing right will grow the windowâ€™s width.
-        # Pressing up will shrink the windowâ€™s height.
-        # Pressing down will grow the windowâ€™s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
