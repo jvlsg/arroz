@@ -53,8 +53,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id "nitrogen --restore"
 exec_always --no-startup-id "xrdb ~/.Xresources"
 exec --no-startup-id "polybar jao"
-exec --no-startup-id "wicd-client"
-exec --no-startup-id "zoom"
+exec --no-startup-id i3-msg "workspace 10; exec wicd-client"
+exec --no-startup-id i3-msg "workspace 10; exec zoom"
 
 #BINDINGS  =====================================================================
 
@@ -62,12 +62,14 @@ bindsym $mod+l exec i3lock -f -t --image=/home/joaog/Pictures/lock.png
 
 
 #FUNCTION KEYS ------------------------
-#bindsym $mod+F1 exec firefox
 bindsym $mod+F1 exec firefox 
 bindsym $mod+F3 exec pcmanfm
+bindsym $mod+F4 exec cherrytree 
 
 bindsym $mod+F5 exec virtualbox 
+bindsym $mod+F7 exec snap run spotify 
 
+bindsym $mod+F10 exec keepassxc 
 # Pavucontrol
 bindsym $mod+F11 exec arandr
 bindsym $mod+F12 exec pavucontrol

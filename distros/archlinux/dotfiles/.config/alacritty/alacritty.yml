@@ -1,0 +1,82 @@
+window:
+  #decorations: 'none'
+  title: " "
+  padding:
+    x: 5
+    y: 0
+
+font:
+  # The normal (roman) font face to use.
+  normal:
+    family: Noto Mono
+    # Style can be specified to pick a specific face.
+    style: Regular
+
+  # The bold font face
+  bold:
+    family: Noto Mono
+    # Style can be specified to pick a specific face.
+    style: Bold
+
+  # The italic font face
+  #italic:
+    #family: Droid Sans Mono Slashed for Powerline
+    # Style can be specified to pick a specific face.
+    # style: Italic
+
+cursor:
+  style: Underline
+
+colors:
+  # Default colors
+  primary:
+    background: '0x1d1f21'
+    foreground: '0xc5c8c6'
+
+    dim_foreground:    '0xdbdbdb'
+    bright_foreground: '0xd9d9d9'
+    dim_background:    '0x202020' # not sure
+    bright_background: '0x3a3a3a' # not sure
+
+  # Cursor colors
+  cursor:
+    text:   '0x2c2c2c'
+    cursor: '0xc5c8c6'
+
+  # Normal colors
+  normal:
+    black:   '0x282a2e'
+    red:     '0xa54242'
+    green:   '0x8c9440'
+    yellow:  '0xde935f'
+    blue:    '0x5f819d'
+    magenta: '0x3e99cb'
+    cyan:    '0x5e8d87'
+    white:   '0x707880'
+
+  # Bright colors
+  bright:
+    black:   '0x373b41'
+    red:     '0xcc6666'
+    green:   '0xb5bd68'
+    yellow:  '0xebc17a'
+    blue:    '0x81a2be'
+    magenta: '0x5d6aca'
+    cyan:    '0x8abeb7'
+    white:   '0xc5c8c6'
+
+  # Dim colors
+  dim:
+    black:   '0x232323'
+    red:     '0x74423f'
+    green:   '0x5e6547'
+    yellow:  '0x8b7653'
+    blue:    '0x556b79'
+    magenta: '0x6e4962'
+    cyan:    '0x5c8482'
+    white:   '0x828282'
+
+
+key_bindings:
+  - { key: Up,      mods: Shift,   action: ScrollLineUp}
+  - { key: Down,       mods: Shift,   action: ScrollLineDown}

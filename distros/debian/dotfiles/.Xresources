@@ -1,8 +1,9 @@
 Uxvt.perl-ext-common: font-size
 URxvt.depth: 32
 
-*.font:	xft: Raize:size=12
+!*.font:	xft: Raize:size=12
 !URxvt.font:	xft: FreeMono:size=12
+URxvt.font:	xft: Unifont:size=12
 !URxvt.font:	xft:DejaVuSansMono:size=12
 
 !BACKGROUND & TRANSPARENCY ====================================================
@@ -14,7 +15,7 @@ URxvt.depth: 32
 !urxvt*shading:	30
 *foreground: #f2f2f2
 !urxvt.background: rgba:0000/0000/0200/c800
-URxvt.background: [80]#000000
+URxvt.background: [85]#121212
 
 !COLORS =======================================================================
 ! special
