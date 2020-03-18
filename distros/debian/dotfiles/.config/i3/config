@@ -117,7 +117,7 @@ bindsym $mod+Print exec shutter
 
 #TERMINAL -----------------------------
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec snap run alacritty
 
 #LAUNCHER -----------------------------
 bindsym $mod+d exec dmenu_run -fn "raize-12"
