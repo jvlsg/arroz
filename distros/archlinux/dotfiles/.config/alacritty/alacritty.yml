@@ -1,20 +1,23 @@
+shell:
+  program: /bin/fish
+  args:
+    - -l
 window:
-  #decorations: 'none'
-  title: " "
+  decorations: 'none'
   padding:
     x: 5
-    y: 0
+    y: 5
 
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Noto Mono
+    family: ypn envypn
     # Style can be specified to pick a specific face.
     style: Regular
 
   # The bold font face
   bold:
-    family: Noto Mono
+    family: ypn envypn
     # Style can be specified to pick a specific face.
     style: Bold
 
@@ -30,7 +33,7 @@ cursor:
 colors:
   # Default colors
   primary:
-    background: '0x1d1f21'
+    background: '0x0a0a0a'
     foreground: '0xc5c8c6'
 
     dim_foreground:    '0xdbdbdb'
@@ -76,7 +79,9 @@ colors:
     cyan:    '0x5c8482'
     white:   '0x828282'
 
-
 key_bindings:
   - { key: Up,      mods: Shift,   action: ScrollLineUp}
   - { key: Down,       mods: Shift,   action: ScrollLineDown}
+
+
+backgroud_opacity: 0.3
