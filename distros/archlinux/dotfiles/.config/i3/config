@@ -112,7 +112,7 @@ bindsym $mod+Print exec shutter
 
 #TERMINAL -----------------------------
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec alacritty
 
 #LAUNCHER -----------------------------
 bindsym $mod+d exec rofi -show run -modi run -location 1 -width 100 
