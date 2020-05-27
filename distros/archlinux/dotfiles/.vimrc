@@ -1,4 +1,4 @@
-set number
+set nu rnu 
 syntax on               " syntax highlighting
 set vb
 
