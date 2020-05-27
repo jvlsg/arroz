@@ -10,6 +10,8 @@ function fonts
 	fc-list | cut -f2 -d ":" | sort -u
 end
 
+set fish_greeting
+
 # ENV VARIABLES  ============================================================
 #export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin:/home/jv/.vimpkg/bin"
 export EDITOR='vim'

@@ -14,6 +14,7 @@ set colorcolumn=80      " 80 Charcter highlight
 "Show Special characters
 ":set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 ":set list
+set nowrap
 
 " make backspaces more powerfull
 set backspace=indent,eol,start
@@ -23,6 +24,8 @@ set showcmd             " show (partial) command in status line
 
 "SEARCH
 set hlsearch
+hi Search ctermbg=DarkBlue
+hi Search ctermfg=LightYellow
 set incsearch
 set ignorecase
 set smartcase
