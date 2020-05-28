@@ -30,7 +30,7 @@ set $red #cc6666
 set $blue #81A2BE
 
 set $black #282a2e
-set $green #b5bd68
+set $green #8c9440 
 set $yellow #f0c674
 
 # class                 border  backgr. text    indicator child_border
