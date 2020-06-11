@@ -1,39 +1,44 @@
-shell:
-  program: /bin/fish
-  args:
-    - -l
 window:
-  decorations: 'none'
+  #decorations: 'none'
+  title: " "
   padding:
     x: 5
-    y: 5
+    y: 0
 
 font:
+  size: 11.0
   # The normal (roman) font face to use.
   normal:
-    family: ypn envypn
+    family: Fira Code 
     # Style can be specified to pick a specific face.
     style: Regular
 
   # The bold font face
   bold:
-    family: ypn envypn
+    family: Fira Code 
     # Style can be specified to pick a specific face.
     style: Bold
 
   # The italic font face
-  #italic:
-    #family: Droid Sans Mono Slashed for Powerline
+  italic:
+    family: Fira Code 
     # Style can be specified to pick a specific face.
-    # style: Italic
+    style: Italic
 
 cursor:
   style: Underline
 
+visual_bell:
+  animation: EaseOutExpo
+  color: '0xffffff'
+  duration: 0
+
+background_opacity: 0.9
+
 colors:
   # Default colors
   primary:
-    background: '0x0a0a0a'
+    background: '0x1d1f21'
     foreground: '0xc5c8c6'
 
     dim_foreground:    '0xdbdbdb'
@@ -79,9 +84,60 @@ colors:
     cyan:    '0x5c8482'
     white:   '0x828282'
 
+
 key_bindings:
-  - { key: Up,      mods: Shift,   action: ScrollLineUp}
-  - { key: Down,       mods: Shift,   action: ScrollLineDown}
+  - { key: Key0,     mods: Control,       action: ResetFontSize    }
+  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
+  - { key: Subtract,    mods: Control,       action: DecreaseFontSize }
+  - { key: V,        mods: Control|Shift, action: Paste            }
+  - { key: C,        mods: Control|Shift, action: Copy             }
+  - { key: Up,      mods: Shift,   action: ScrollPageUp}
+  - { key: Down,       mods: Shift,   action: ScrollPageDown}
 
 
-backgroud_opacity: 0.3
+  - { key: Home,                          chars: "\x1bOH",   mode: AppCursor   }
+  - { key: Home,                          chars: "\x1b[H",   mode: ~AppCursor  }
+  - { key: End,                           chars: "\x1bOF",   mode: AppCursor   }
+  - { key: End,                           chars: "\x1b[F",   mode: ~AppCursor  }
+  - { key: Equals,   mods: Command,       action: IncreaseFontSize             }
+  - { key: Minus,    mods: Command,       action: DecreaseFontSize             }
+  - { key: Minus,    mods: Command|Shift, action: ResetFontSize                }
+  - { key: PageUp,   mods: Shift,         chars: "\x1b[5;2~"                   }
+  - { key: PageUp,   mods: Control,       chars: "\x1b[5;5~"                   }
+  - { key: PageUp,                        chars: "\x1b[5~"                     }
+  - { key: PageDown, mods: Shift,         chars: "\x1b[6;2~"                   }
+  - { key: PageDown, mods: Control,       chars: "\x1b[6;5~"                   }
+  - { key: PageDown,                      chars: "\x1b[6~"                     }
+  - { key: Left,     mods: Control,       chars: "\x1b[1;5D"                   }
+  - { key: Left,     mods: Alt,           chars: "\x1b[1;3D"                   }
+  - { key: Left,                          chars: "\x1b[D",   mode: ~AppCursor  }
+  - { key: Left,                          chars: "\x1bOD",   mode: AppCursor   }
+  - { key: Right,    mods: Control,       chars: "\x1b[1;5C"                   }
+  - { key: Right,    mods: Alt,           chars: "\x1b[1;3C"                   }
+  - { key: Right,                         chars: "\x1b[C",   mode: ~AppCursor  }
+  - { key: Right,                         chars: "\x1bOC",   mode: AppCursor   }
+  - { key: Up,       mods: Control,       chars: "\x1b[1;5A"                   }
+  - { key: Up,       mods: Alt,           chars: "\x1b[1;3A"                   }
+  - { key: Up,                            chars: "\x1b[A",   mode: ~AppCursor  }
+  - { key: Up,                            chars: "\x1bOA",   mode: AppCursor   }
+  - { key: Down,     mods: Control,       chars: "\x1b[1;5B"                   }
+  - { key: Down,     mods: Alt,           chars: "\x1b[1;3B"                   }
+  - { key: Down,                          chars: "\x1b[B",   mode: ~AppCursor  }
+  - { key: Down,                          chars: "\x1bOB",   mode: AppCursor   }
+  - { key: Tab,      mods: Shift,         chars: "\x1b[Z"                      }
+  - { key: F1,                            chars: "\x1bOP"                      }
+  - { key: F2,                            chars: "\x1bOQ"                      }
+  - { key: F3,                            chars: "\x1bOR"                      }
+  - { key: F4,                            chars: "\x1bOS"                      }
+  - { key: F5,                            chars: "\x1b[15~"                    }
+  - { key: F6,                            chars: "\x1b[17~"                    }
+  - { key: F7,                            chars: "\x1b[18~"                    }
+  - { key: F8,                            chars: "\x1b[19~"                    }
+  - { key: F9,                            chars: "\x1b[20~"                    }
+  - { key: F10,                           chars: "\x1b[21~"                    }
+  - { key: F11,                           chars: "\x1b[23~"                    }
+  - { key: F12,                           chars: "\x1b[24~"                    }
+  - { key: Back,                          chars: "\x7f"                        }
+  - { key: Back,     mods: Alt,           chars: "\x1b\x7f"                    }
+  - { key: Insert,                        chars: "\x1b[2~"                     }
+  - { key: Delete,                        chars: "\x1b[3~"                     }

@@ -14,35 +14,32 @@
 set $mod Mod4
 
 #No window title
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 3
 
 gaps inner 10
 gaps outer 10
 
 #COLORS =======================================================================
-set $white #ffffff
-set $black #000000
+set $white #c5c8c6
+set $black #1d1f21
 
 set $lgrey #888888
-set $mgrey #2f343a
-set $dgrey3 #333333
-set $dgrey2 #222222
+set $mgrey #5f676a 
+set $dgrey #333333
+set $red #cc6666
+set $blue #81A2BE
 
-set $lblue #528fff
-set $dblue #29477F
-set $dblue2 #4F607F 
-
-set $sealblue #005555
-set $teal #2d7d9a
-
+set $black #282a2e
+set $green #8c9440 
+set $yellow #f0c674
 
 # class                 border  backgr. text    indicator child_border
-client.focused          $lblue	$mgrey	$white	$white	$lblue
-client.focused_inactive $dgrey3 #5f676a $white #484e50   #5f676a
-client.unfocused        $dgrey3 $dgrey2 $lgrey #292d2e   $dgrey2
-client.urgent           #2f343a #900000 $white #900000   #900000
-client.placeholder      $black #0c0c0c $white #000000   #0c0c0c
-client.background       #ffffff
+client.focused          $green  $black	$white  $green  $blue
+client.focused_inactive $yellow  $black $white  $lgrey  $black 
+client.unfocused        $black  $black  $mgrey  $red    $dgrey
+client.urgent           $dgrey  $red    $white  $red    $red 
+client.placeholder      $black  $black  $white  $black  $black 
+client.background       $white
 
 
 #AUTOSTART ====================================================================
@@ -53,21 +50,26 @@ exec --no-startup-id nm-applet
 exec --no-startup-id "nitrogen --restore"
 exec_always --no-startup-id "xrdb ~/.Xresources"
 exec --no-startup-id "polybar jao"
-exec --no-startup-id "wicd-client"
-exec --no-startup-id "zoom"
-
+exec --no-startup-id "bash .config/screenlayout/default_dual.sh"
+exec --no-startup-id volumeicon
+exec --no-startup-id nm-applet
+exec --no-startup-id pamac-tray
+exec --no-startup-id clipit
 #BINDINGS  =====================================================================
 
-bindsym $mod+l exec i3lock -B=5 -S=0 -k --timecolor=FFFFFFFF --datecolor=FFFFFFFF
+bindsym $mod+l exec blurlock 
+#bindsym $mod+l exec i3lock -f -c 1d1f21 
 
 
 #FUNCTION KEYS ------------------------
-#bindsym $mod+F1 exec firefox
 bindsym $mod+F1 exec firefox 
 bindsym $mod+F3 exec pcmanfm
+bindsym $mod+F4 exec cherrytree 
 
 bindsym $mod+F5 exec virtualbox 
+bindsym $mod+F7 exec snap run spotify 
 
+bindsym $mod+F10 exec keepassxc 
 # Pavucontrol
 bindsym $mod+F11 exec arandr
 bindsym $mod+F12 exec pavucontrol
@@ -91,14 +93,15 @@ bindsym $mod+k mode "$keyboard_layout"
 
 #LIGHT --------------------------------
 
-bindsym $mod+i exec light -A 5 # increase screen brightness
-bindsym $mod+o exec light -U 5 # decrease screen brightness
+#bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+
+bindsym $mod+Shift+F12 exec light -A 5 # increase screen brightness
+bindsym $mod+Shift+F11 exec light -U 5 # decrease screen brightness
 
 #MULTIMEDIA ---------------------------
 
 # volume
-#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-#bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym $mod+Shift+F3 exec pactl set-sink-volume 0 +5%
 bindsym $mod+Shift+F2 exec pactl set-sink-volume 0 -5%
 # mute
@@ -107,20 +110,16 @@ bindsym $mod+Shift+F1 exec pactl set-sink-mute 0 toggle
 bindsym $mod+n exec nitrogen ~/Pictures/Wallpapers
 
 #PRINT SCREEN ------------------------
-bindsym Print exec scrot '%Y-%m-%d-.png' -e 'mv $f ~/Pictures/Prints'
-bindsym $mod+Print exec shutter 
+bindsym Print exec scrot '%F-%H:%M.png' -e 'mv $f ~/Pictures/Prints'
+bindsym $mod+Print exec flameshot 
 
 #TERMINAL -----------------------------
 # start a terminal
 bindsym $mod+Return exec alacritty
 
 #LAUNCHER -----------------------------
-bindsym $mod+d exec rofi -show run -modi run -location 1 -width 100 
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop -fn "envypn-12"
-
+bindsym $mod+d exec --no-startup-id dmenu_recency 
+bindsym $mod+z exec --no-startup-id morc_menu
 
 #MAIN CONFIG ==================================================================
 
