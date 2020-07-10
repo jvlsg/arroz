@@ -98,16 +98,16 @@ font-2 = Siji:size=22;1
 ;modules-center =  
 ;modules-right = xbacklight pulseaudio xkeyboard cpu memory battery temperature date 
 
-modules-left = cpu memory xkeyboard temperature  
-modules-center =  i3
-modules-right = date 
+modules-left = cpu memory temperature  xwindow 
+modules-center =  i3 
+modules-right = xkeyboard date 
 
 tray-position = right
 tray-padding = 2
 ;tray-background = ${colors.secondary}
 
 ;wm-restack = bspwm
-wm-restack = i3
+;wm-restack = i3
 
 override-redirect = false
 
@@ -123,14 +123,9 @@ cursor-scroll = ns-resize
 ;╚══════╝   ╚═╝   ╚══════╝
                         
 [bar/eye]
-;monitor = ${env:MONITOR:HDMI-1}
-;monitor="LVDS-1"
-;width = 80%
-    height = 15
-;offset-x = -20%
-;offset-y = 1%
-
-bottom = false
+monitor="DVI-D-0"
+height = 20 
+bottom = true 
 
 ;Round edges
 radius = 0.0
@@ -152,14 +147,13 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = FontAwesome:size=10;1
-font-1 = Raize:size=10;1
-;font-1 = unifont:fontformat=truetype:size=11;0
+font-1 = Fira Code:size=11;1
 font-2 = siji:size=22;1
 
 
-modules-left =  
-modules-center = news 
-modules-right = wired-network wireless-network filesystem
+modules-left = date cpu memory filesystem 
+modules-center = wttr_check
+modules-right = wireguard_check 
 
 tray-position = right
 tray-padding = 2
@@ -181,9 +175,27 @@ cursor-scroll = ns-resize
 ;script temperature text xbacklight xkeyboard xwindow xworkspaces
 ;==============================================================================
 
+[module/wireguard_check]
+type = custom/script
+exec = wg_check.py
+interval = 60
+format-underline = ${colors.color3}
+
+[module/wttr_check]
+type = custom/script
+exec = curl -s "wttr.in/sao_paulo?format=%C+%t+%o\n"
+interval = 3600
+format-underline = ${colors.color4}
+click-left = $TERM --hold -e curl -s "wttr.in/sao_paulo?format=v2"
+
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+;label = %title:0:30:...%
+label = %title%
+label-maxlen = 20
+format-background = ${colors.color14}
+format-foreground = #000
+format-padding = 4
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -207,10 +219,13 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+mount-1 = /home
+label-mounted = %{F#%{colors.color15}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
+
+;format = <label>
+label-mounted-underline = ${colors.color15}
 
 [module/bspwm]
 type = internal/bspwm
@@ -300,12 +315,12 @@ ping-interval = 3
 
 [module/wired-network]
 type = internal/network
-interface = eno1
+interface = enp3s0
 inherit = module/network
 
 [module/wireless-network]
 type = internal/network
-interface = wlo1
+interface = wlo1 
 
 ;inherit = module/network
 

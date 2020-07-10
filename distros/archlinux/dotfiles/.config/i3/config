@@ -1,6 +1,4 @@
-
 #BASICS =======================================================================
-
 set $mod Mod4
 
 #No window title
@@ -41,6 +39,7 @@ exec --no-startup-id "bash .config/screenlayout/default_dual.sh"
 exec --no-startup-id "nitrogen --restore"
 exec_always --no-startup-id "xrdb ~/.Xresources"
 exec --no-startup-id "polybar jao"
+exec --no-startup-id "polybar eye"
 exec --no-startup-id volumeicon
 exec --no-startup-id nm-applet
 exec --no-startup-id pamac-tray
@@ -50,7 +49,8 @@ exec --no-startup-id fctix
 bindsym $mod+l exec i3lock -f -c 1d1f21 --clock --timecolor=81a2beff --datecolor=81a2beff --datestr="%A - %x"
 
 #FUNCTION KEYS ------------------------
-bindsym $mod+F1 exec firefox 
+bindsym $mod+F1 exec firefox
+bindsym $mod+F2 exec alacritty -e newsboat 
 bindsym $mod+F3 exec pcmanfm
 bindsym $mod+F4 exec cherrytree 
 
@@ -67,11 +67,10 @@ bindsym $mod+Shift+question exec --no-startup-id polybar eye
 bindsym $mod+Shift+period exec pkill -f "polybar eye"
 
 #KEYBOARD LAYOUT ---------------------
-set $keyboard_layout Keyboard Layout: (b) br, (e) en-us, (j) jp
+set $keyboard_layout Keyboard Layout: (b) br, (e) en-us
 mode "$keyboard_layout" {
     bindsym b exec --no-startup-id setxkbmap br ,mode "default"
     bindsym e exec --no-startup-id setxkbmap us ,mode "default"
-    bindsym j exec --no-startup-id setxkbmap jp ,mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -81,14 +80,7 @@ bindsym $mod+k mode "$keyboard_layout"
 
 #LIGHT --------------------------------
 
-#bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
-#bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
-
-bindsym $mod+Shift+F12 exec light -A 5 # increase screen brightness
-bindsym $mod+Shift+F11 exec light -U 5 # decrease screen brightness
-
 #MULTIMEDIA ---------------------------
-
 # volume
 bindsym $mod+Shift+F3 exec pactl set-sink-volume 0 +5%
 bindsym $mod+Shift+F2 exec pactl set-sink-volume 0 -5%
@@ -99,15 +91,14 @@ bindsym $mod+n exec nitrogen ~/Pictures/Wallpapers
 
 #PRINT SCREEN ------------------------
 bindsym Print exec scrot '%F-%H:%M.png' -e 'mv $f ~/Pictures/Prints'
-bindsym $mod+Print exec flameshot 
+bindsym $mod+Print exec flameshot gui 
 
 #TERMINAL -----------------------------
 # start a terminal
 bindsym $mod+Return exec alacritty
 
 #LAUNCHER -----------------------------
-bindsym $mod+d exec --no-startup-id dmenu_recency 
-bindsym $mod+z exec --no-startup-id morc_menu
+bindsym $mod+d exec --no-startup-id rofi -show drun -location 2 -show-icons -terminal alacritty 
 
 #MAIN CONFIG ==================================================================
 
@@ -220,6 +211,6 @@ bindsym $mod+r mode "resize"
 
 # floating windows
 for_window [class="Pavucontrol"] floating enable
-for_window [class="Kalu"] floating enable
+for_window [instance="origin.exe"] floating enable
 
 
