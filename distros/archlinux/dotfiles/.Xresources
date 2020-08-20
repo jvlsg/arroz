@@ -1,5 +1,5 @@
 !BACKGROUND & TRANSPARENCY ====================================================
-*foreground: #f2f2f2
+!*foreground: #f2f2f2
 !URxvt.background: [80]#000000
 !COLORS =======================================================================
 !special
@@ -28,8 +28,8 @@
 *.color12:      #81a2be
 
 ! magenta
-*.color5:       #3e99cb
-*.color13:      #5d6aca
+*.color5:       #5d6aca
+*.color13:      #798fca
 
 ! cyan
 *.color6:       #5e8d87

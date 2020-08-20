@@ -15,23 +15,15 @@
 ;   The README contains alot of information
 ;
 ;==========================================================
-
+;${xrdb:KEY:fallback value}
 [colors]
-;background = ${xrdb:color0:#222}
-background = #aa111111
-background-alt = #aa040404
+;background = ${xrdb:background:#1d1f21}
+background = #aa1d1f21
+foreground = ${xrdb:foreground:#c5c8c6}
 
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #555
-
-
-
-;primary = #ffb52a
-primary = ${xrdb:color6:#222}
-;secondary = #e60053
+primary = ${xrdb:color4}
 secondary = ${xrdb:color4:#222}
-alert = #bd2c40
+alert = ${xrdb:color9:#bd2c40}
 
 color0 = ${xrdb:color0:#222}
 color1 = ${xrdb:color1:#222}
@@ -61,7 +53,6 @@ color15= ${xrdb:color15:#222}
                                          
 
 [bar/jao]
-;monitor = ${env:MONITOR:HDMI-1}
 monitor="HDMI-0"
 width = 100%
 height = 20
@@ -78,25 +69,21 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
-line-color = #f00
+line-color = ${colors.foreground}
 
-border-size = 4
+; Border around bar. Use w/ transparent to make the bar "float"
+border-size = 0
 border-color = #00000000
 
-padding-left = 2
-padding-right = 0
+padding-left = 2 
+padding-right = 2
 
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = FontAwesome:size=22;1
+font-0 = FontAwesome:size=12;1
 font-1 = Fira Code:size=11;1
-font-2 = Siji:size=22;1
-
-
-;modules-left = powermenu i3 
-;modules-center =  
-;modules-right = xbacklight pulseaudio xkeyboard cpu memory battery temperature date 
+;font-2 = Siji:size=22;1
 
 modules-left = cpu memory temperature  xwindow 
 modules-center =  i3 
@@ -104,7 +91,6 @@ modules-right = xkeyboard date
 
 tray-position = right
 tray-padding = 2
-;tray-background = ${colors.secondary}
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -135,13 +121,13 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
-line-color = #f00
+line-color = ${colors.foreground}
 
-border-size = 4
+border-size = 0
 border-color = #00000000
 
 padding-left = 2
-padding-right = 0
+padding-right = 2
 
 module-margin-left = 1
 module-margin-right = 2
@@ -151,8 +137,8 @@ font-1 = Fira Code:size=11;1
 font-2 = siji:size=22;1
 
 
-modules-left = date cpu memory filesystem 
-modules-center = wttr_check
+modules-left = cpu memory filesystem temperature 
+modules-center = date wttr_check
 modules-right = wireguard_check 
 
 tray-position = right
@@ -178,7 +164,7 @@ cursor-scroll = ns-resize
 [module/wireguard_check]
 type = custom/script
 exec = wg_check.py
-interval = 60
+interval = 10
 format-underline = ${colors.color3}
 
 [module/wttr_check]
@@ -186,22 +172,22 @@ type = custom/script
 exec = curl -s "wttr.in/sao_paulo?format=%C+%t+%o\n"
 interval = 3600
 format-underline = ${colors.color4}
-click-left = $TERM --hold -e curl -s "wttr.in/sao_paulo?format=v2"
+click-left = alacritty --hold -e curl -s "wttr.in/sao_paulo" 
+click-right = alacritty --hold -e curl -s "wttr.in/sao_paulo?format=v2" 
 
 [module/xwindow]
 type = internal/xwindow
 ;label = %title:0:30:...%
 label = %title%
 label-maxlen = 20
-format-background = ${colors.color14}
-format-foreground = #000
+format-background = ${colors.primary}
+format-foreground = ${colors.background} 
 format-padding = 4
 
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
-
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.color14}
 format-prefix-underline = ${colors.color14}
 
@@ -217,21 +203,22 @@ label-indicator-underline = ${colors.background}
 [module/filesystem]
 type = internal/fs
 interval = 25
+spacing = 4
 
 mount-0 = /
 mount-1 = /home
-label-mounted = %{F#%{colors.color15}%mountpoint%%{F-}: %percentage_used%%
+label-mounted =  %{F#%{colors.color15}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+label-unmounted-foreground = ${colors.foreground}
 
-;format = <label>
-label-mounted-underline = ${colors.color15}
+format = <label>
+format-mounted-underline = ${colors.color15}
 
 [module/bspwm]
 type = internal/bspwm
 
 label-focused = %index%
-label-focused-background = ${colors.background-alt}
+label-focused-background = ${colors.background}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
@@ -243,7 +230,7 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
+label-empty-foreground = ${colors.foreground}
 label-empty-padding = 2
 
 ; Separator in between workspaces
@@ -350,7 +337,7 @@ bar-fill-font = 2
 bar-fill-foreground = #9f78e1
 bar-empty = ─
 bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+bar-empty-foreground = ${colors.foreground}
 
 [module/backlight-acpi]
 inherit = module/xbacklight
@@ -360,8 +347,9 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format = <label> <ramp-load>
-format-prefix = ""
+format = <label> 
+;<ramp-load>
+format-prefix = " "
 format-prefix-foreground = ${colors.color4}
 format-underline = ${colors.color4}
 label = %percentage:2%%
@@ -380,24 +368,25 @@ ramp-load-7 = █
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = ""
+#format-prefix = ""
+format-prefix = " "
 format-prefix-foreground = ${colors.color2}
 format-underline = ${colors.color2}
 label = %gb_used:2%
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
 date =
 date-alt = " %Y-%m-%d"
 
-time = %H:%M
+time = %H:%M:%S
 time-alt = %H:%M:%S
 
-format-prefix = 
-format-prefix-foreground = ${colors.color5}
-format-underline = ${colors.color5}
+format-prefix =  
+format-prefix-foreground = ${colors.color7}
+format-underline = ${colors.color7}
 
 label = %date% %time%
 
@@ -426,7 +415,7 @@ bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+bar-volume-empty-foreground = ${colors.foreground}
 
 [module/alsa]
 type = internal/alsa
@@ -436,7 +425,7 @@ label-volume = VOL
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
+format-muted-foreground = ${colors.foreground}
 label-muted = sound muted
 
 bar-volume-width = 10
@@ -454,7 +443,7 @@ bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+bar-volume-empty-foreground = ${colors.foreground}
 
 [module/battery]
 
@@ -503,9 +492,9 @@ label-warn = !!!%temperature-c%!!!
 label-warn-foreground = ${colors.color1}
 label-warn-background = ${colors.color0}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 ramp-foreground = ${colors.color9}
 
 [module/powermenu]
@@ -520,7 +509,7 @@ label-open-foreground = ${colors.secondary}
 label-close =  cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+label-separator-foreground = ${colors.foreground}
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1

@@ -43,7 +43,6 @@ exec --no-startup-id "polybar eye"
 exec --no-startup-id volumeicon
 exec --no-startup-id nm-applet
 exec --no-startup-id pamac-tray
-exec --no-startup-id fctix 
 #BINDINGS  =====================================================================
 
 bindsym $mod+l exec i3lock -f -c 1d1f21 --clock --timecolor=81a2beff --datecolor=81a2beff --datestr="%A - %x"
@@ -57,13 +56,13 @@ bindsym $mod+F4 exec cherrytree
 bindsym $mod+F5 exec virtualbox 
 bindsym $mod+F7 exec alacritty -e cmus 
 
-bindsym $mod+F10 exec keepassxc 
-# Pavucontrol
+bindsym $mod+F9 exec keepassxc 
+bindsym $mod+F10 exec --no-startup-id fcitx
 bindsym $mod+F11 exec arandr
-bindsym $mod+F12 exec pavucontrol
+bindsym $mod+F12 exec alacritty -e alsamixer 
 
 #EYE BAR -----------------------------
-bindsym $mod+Shift+question exec --no-startup-id polybar eye
+bindsym $mod+Shift+question exec polybar eye
 bindsym $mod+Shift+period exec pkill -f "polybar eye"
 
 #KEYBOARD LAYOUT ---------------------
@@ -82,11 +81,11 @@ bindsym $mod+k mode "$keyboard_layout"
 
 #MULTIMEDIA ---------------------------
 # volume
-bindsym $mod+Shift+F3 exec pactl set-sink-volume 0 +5%
-bindsym $mod+Shift+F2 exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 # mute
-#bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
-bindsym $mod+Shift+F1 exec pactl set-sink-mute 0 toggle
+bindsym XF86AudioMute exec amixer set mute toggle
+#Wallpapers
 bindsym $mod+n exec nitrogen ~/Pictures/Wallpapers
 
 #PRINT SCREEN ------------------------
@@ -103,7 +102,7 @@ bindsym $mod+d exec --no-startup-id rofi -show drun -location 2 -show-icons -ter
 #MAIN CONFIG ==================================================================
 
 # Font for window titles. Will also be used by the bar unless a different font
-font pango:$font_main
+font pango:Fira Code 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -210,7 +209,9 @@ bindsym $mod+r mode "resize"
 
 
 # floating windows
-for_window [class="Pavucontrol"] floating enable
+for_window [class="alsamixer"] floating enable
+for_window [class="arandr"] floating enable
+for_window [class="nitrogen"] floating enable
 for_window [instance="origin.exe"] floating enable
 
 

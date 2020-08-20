@@ -2,4 +2,4 @@ confirm-exit yes
 refresh-on-startup yes
 
 #Display
-#text-width 80
+text-width 80

@@ -13,12 +13,8 @@ https://aandersonl.github.io/feed.xml tech cybersecurity blog
 https://securityaffairs.co/wordpress/feed tech cybersecurity news
 http://www.archlinux.org/feeds/news/ tech linux foss
 https://lukesmith.xyz/rss.xml tech linux foss blog
+https://www.roguelazer.com/feeds/rss.xml
 http://feeds.arstechnica.com/arstechnica/technology-lab tech business news
-# TWITTER
-https://nitter.net/haystack_ia/rss tech cybersecurity twitter
-https://nitter.net/notdan/rss tech cybersecurity twitter
-https://nitter.net/bitcynth/rss tech cybersecurity twitter
-https://nitter.net/mangopdf/rss tech cybersecurity twitter
 " "
 "+++ SCI-FI +++"
 https://futurewarstories.blogspot.com/feeds/posts/default?alt=rss sci-fi worldbuilding
@@ -26,5 +22,5 @@ http://iwww.projectrho.com/public_html/rocket/AtomicRocketsAtomFeed.xml "~Atomic
 https://toughsf.blogspot.com/feeds/posts/default sci-fi blog worldbuilding
 " "
 "+++ ENTRETAINMENT +++"
-http://feeds.arstechnica.com/arstechnica/gaming games entretainment 
+
 
