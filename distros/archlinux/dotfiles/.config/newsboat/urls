@@ -5,7 +5,7 @@ https://www.economist.com/the-americas/rss.xml news "~The Economist: Americas"
 https://www.economist.com/international/rss.xml news "~The Economist: International"
 https://www.economist.com/the-world-this-week/rss.xml "~The Economist: The World This Week"
 https://www.economist.com/special-report/rss.xml news "~The Economist: Special Reports"
-http://feeds.arstechnica.com/arstechnica/science news science space
+# http://feeds.arstechnica.com/arstechnica/science news science space
 https://www.sofmag.com/feed/ news guns military
 " "
 "+++ TECH +++"
@@ -14,7 +14,8 @@ https://securityaffairs.co/wordpress/feed tech cybersecurity news
 http://www.archlinux.org/feeds/news/ tech linux foss
 https://lukesmith.xyz/rss.xml tech linux foss blog
 https://www.roguelazer.com/feeds/rss.xml
-http://feeds.arstechnica.com/arstechnica/technology-lab tech business news
+# http://feeds.arstechnica.com/arstechnica/technology-lab tech business news
+https://www.matrix.org/blog/feed tech blog
 " "
 "+++ SCI-FI +++"
 https://futurewarstories.blogspot.com/feeds/posts/default?alt=rss sci-fi worldbuilding

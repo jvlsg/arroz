@@ -1,3 +1,4 @@
+cat ~/.cache/wal/sequences
 #FUNCTIONS ======================================================================
 abbr .. "cd .."
 abbr rm "rm -i"
@@ -15,7 +16,7 @@ set fish_greeting
 
 # ENV VARIABLES  ============================================================
 #export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin:/home/jv/.vimpkg/bin"
-export EDITOR='vim'
+export EDITOR='nvim'
 export BROWSER='firefox'
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
-set PATH $PATH ~/.gem/ruby/2.7.0/bin
+set PATH $PATH ~/.gem/ruby/2.7.0/bin ~/.cargo/bin

@@ -12,7 +12,7 @@ source ~/.config/nvim/airline.vim
 call plug#begin()
 Plug 'rust-lang/rust.vim'
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
-" Plug 'jeffkreeftmeijer/neovim-sensible'
+Plug 'vimwiki/vimwiki' 
 Plug 'kassio/neoterm'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

@@ -36,8 +36,9 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id "compton -cC"
 exec --no-startup-id nm-applet
 exec --no-startup-id "bash .config/screenlayout/default_dual.sh"
-exec --no-startup-id "nitrogen --restore"
-exec_always --no-startup-id "xrdb ~/.Xresources"
+#exec --no-startup-id "nitrogen --restore"
+# exec_always --no-startup-id "xrdb ~/.Xresources"
+exec_always --no-startup-id "wal -R" #Using Pywal
 exec --no-startup-id "polybar jao"
 exec --no-startup-id "polybar eye"
 exec --no-startup-id volumeicon
@@ -45,7 +46,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id pamac-tray
 #BINDINGS  =====================================================================
 
-bindsym $mod+l exec i3lock -f -c 1d1f21 --clock --timecolor=81a2beff --datecolor=81a2beff --datestr="%A - %x"
+bindsym $mod+l exec i3lock --show-failed-attempts -c 1d1f21 --clock --timecolor=81a2beff --datecolor=81a2beff --datestr="%A - %x" 
 
 #FUNCTION KEYS ------------------------
 bindsym $mod+F1 exec firefox
